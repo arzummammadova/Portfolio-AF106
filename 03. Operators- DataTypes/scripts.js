@@ -22,7 +22,7 @@ let num_2 = 1;
 let fib = ""; 
 
 
-fib += num_1 + ", " + num_2;//ilki ikincini output 
+fib += num_1 + ", " + num_2;
 
 for (let i = 2; i < 10; i++) { 
     let nextFib = num_1 + num_2; 
