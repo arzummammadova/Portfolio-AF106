@@ -1,0 +1,36 @@
+body{
+    background-image: linear-gradient(to right,#57D5E3,#9E00E9);
+}
+h1{
+    text-align: center;
+}
+
+.login-form{
+    width: 400px;
+    margin: 100px auto;
+    background-color: white;
+}
+form{   
+    background-color: white;
+    width: 350px;
+    margin: 0 auto;
+
+}
+input,button{
+ width: 350px;
+ height: 40px;
+}
+
+button{
+    background-image: linear-gradient(to right,#57D5E3,#9E00E9);
+    color: white;
+}
+
+a{
+    color: #ABC3D1;
+}
+
+.register{
+    text-align: center;
+
+}

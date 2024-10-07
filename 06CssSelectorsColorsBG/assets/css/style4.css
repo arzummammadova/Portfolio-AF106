@@ -1,0 +1,23 @@
+body{
+    background-image: url(../images/jelly.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.box{
+    padding: 30px;
+
+    width: 400px;
+    margin: 150px auto;
+    background-color: rgba(0, 0, 0, 0.799);
+
+
+}
+
+.box p{
+    color: white;
+  
+}
+

@@ -1,0 +1,11 @@
+div {
+    background-image: url("../images/manga.jpg");
+
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+p {
+    color: yellow;
+    text-align: center;
+}

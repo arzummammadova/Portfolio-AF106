@@ -1,0 +1,132 @@
+/* Butun element ucun tetbiq olunur  */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* tag secende bu formada yaziriq elementselector*/
+h1 {
+
+    color: darkblue;
+   
+}
+
+/* Element list selector: <div>, <p> və <footer> elementlərinə eyni stili tətbiq edir */
+/* div, p, footer {
+    background-color: rgb(234, 240, 203);
+    }
+     */
+    
+
+/* Class selector: class="header" olan elementlərə stil tətbiq edir h1 in yerine bele yaza bilerik
+ve bunu oxuyacaq birinci class di ona gore 0 1 0  h1 is 0 0 1 */
+.header {
+    background-color: rgb(169, 226, 228);
+  
+}
+
+/*id bir defe istifade oluna biler secmek ucun # istifade olunur*/
+#home {
+    background-color: lightyellow;
+  
+  
+}
+
+/* Element + Element selector <h2> 
+elementindən sonra gələn ilk <p> elementinə stil tətbiq edir */
+h2 + p {
+    color: rgb(28, 197, 200);
+}
+
+/* Element > Element selector 
+Birbaşa <section> içində olan <h2> elementinə stil verir */
+/* section > h2 {
+   color: yellowgreen;
+} */
+
+/* Element ~ Element selector
+ Bir <h2> başlığından sonra gələn bütün <p> elementlərini seçir */
+h2 ~ p {
+    color: rgb(55, 53, 53);
+}
+/* 
+bir tag icindeki classda name1 name2 varsa */
+.name1.name2{
+    color: red;
+  }
+  
+  /* name1 clasin icinde name2 varsa */
+  .name1 .name2{
+    color: blue;
+  }
+
+/* Pseudo-class :hover: Hover uzerine gelende olur  */
+a:hover {
+    color: orange;
+  
+}
+/*a nin rengi defaul kimi*/
+a{
+    color: red;
+}
+
+/* Pseudo-class :focus: klikledikde olur*/
+input:focus ,textarea:focus{
+  
+    background-color: rgb(46, 118, 142);
+}
+
+/* Pseudo-class :active: Aktiv <button> elementləri üçün stil */
+button:active {
+    background-color: blue;
+    color: white;
+}
+
+/* Pseudo-class :nth-child: Hər ikinci <li> elementinə stil tətbiq edir */
+nav ul li:nth-child(2) {
+    background-color: lightgreen;
+}
+
+/* Pseudo-class :nth-last-child: Arxadan sayılan 1-ci <p> elementinə stil tətbiq edir */
+section p:nth-last-child(1) {
+   color: rgb(80, 80, 14);
+}
+
+/* Pseudo-class :first-child: İlk <li> elementinə stil tətbiq edir */
+nav ul li:first-child {
+   color: aquamarine;
+}
+
+/* Pseudo-class :last-child: Son <li> elementinə stil tətbiq edir */
+nav ul li:last-child {
+    color: blue;
+}
+
+/* Pseudo-class :before: <h2>  əvvəl content əlavə edir */
+.service-title::before {
+    content: "Bu before ile yazilib! ";
+    color: rgb(242, 134, 228);
+}
+
+/* Pseudo-class kontent elave edir id -si home olan icinde h2 tag olana after tetbiq edirik*/
+#home>h2::after {
+    content: " - Bu after ile yazilib!";
+    color: green;
+}
+
+/* Pseudo-class :checked: Seçilmiş checkbox elementlərinə stil tətbiq edir (gələcək checkboxlar üçün) */
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+
+}
+
+/* Attribute selector atributuna gore secir meselen a-nin atributu hrefdir
+href atributu olan <a> elementlərinə stil verir */
+/* a[href] {
+    color: rgb(95, 90, 90);
+   
+} */
