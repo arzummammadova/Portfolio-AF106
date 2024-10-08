@@ -1,0 +1,33 @@
+*{
+    padding:0px;
+    margin: 0px ;
+box-sizing: border-box;
+}
+.container{
+    max-width: 900px; 
+    margin: 100px auto;
+}
+
+
+.card{
+    width: 400px;
+       height: 100px;
+    display: inline-block;
+}
+
+.blue{
+    color: #78A6E2;
+    font-size: 30px;
+    padding: 20px;
+   
+    font-weight: 500;
+}
+
+.text{
+    margin-top: 30px 0px;
+}
+
+.cursive{
+    font-weight: bold;
+    font-style: italic;
+}

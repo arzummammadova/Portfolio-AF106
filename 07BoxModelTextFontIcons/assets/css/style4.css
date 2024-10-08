@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0 ;
+    box-sizing: border-box;
+    
+}
+
+.boxes{
+    max-width: 900px;
+    margin: 0px auto;
+}
+.box{
+    margin: 50px;
+    font-size: 16px;
+    width: 300px;
+    display: inline-block;
+    padding: 70px 10px;
+    height: 200px;
+  
+   
+}
+
+
+.full{
+    border: 10px solid;
+      border-image: linear-gradient(to right,#4BDAC7,#AFF73C) ;
+      border-image-slice: 1;
+  }
+  
+  .horizontal{
+   border-top: 10px solid;
+     border-bottom: 10px solid transparent;
+      border-image: linear-gradient(to left,#4BDAC7,#AFF73C) 1;
+      
+  }
+  .vertical{
+    border-right: 10px solid ;
+    border-left: 10px solid transparent;
+    border-image: linear-gradient(to bottom,#4BDAC7,#AFF73C)1;
+  }
+/* .with-radius{
+  
+   border-radius: 20px;
+
+ border: 10px solid ;
+    border-image: linear-gradient(to bottom,#4BDAC7,#AFF73C)1;
+  bele yazirdim alinmirdi gorsenmirdi 
+} */
+.with-radius {
+  border-radius: 20px;
+  background: linear-gradient(white, white) padding-box, 
+              linear-gradient(to bottom, #4BDAC7, #AFF73C) border-box;
+  border: 10px solid transparent; /* Sərhəddə rəng yox, gradient göstərilir */
+}

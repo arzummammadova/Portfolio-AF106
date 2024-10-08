@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+}
+.container{
+    max-width: 1200px;
+    margin: 100px auto;
+ 
+}
+
+
+h1{
+    font-size: 25px;
+    text-align: center;
+
+}
+.cards{
+    margin-top: 20px;
+    display: inline-block;
+}
+.card{
+    padding: 30px 10px;
+    width: 250px;
+    margin-left: 30px;
+    height: 340px;
+    border: 1px solid #D0D0D0;
+    box-shadow: 5px 4px 10px #F1F1F1 ;
+    background-color: #F1F1F1;
+    display: inline-block;
+}
+
+svg{
+    width: 40px;
+    margin-left: 70px;
+ 
+    height: 40px;
+color: #3C88BB;
+
+}
+
+h2{
+    margin: 20px;
+font-size: 25px;
+text-align: center;
+}

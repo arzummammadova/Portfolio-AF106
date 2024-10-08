@@ -1,0 +1,97 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.boxes {
+    max-width: 600px;
+    margin: 100px auto;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+
+    display: inline-block;
+}
+
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.leaf {
+    border-radius: 0px 75px 50px 75px;
+
+}
+
+.clover-leaf1 {
+    border-radius: 50px 75px 0px 75px;
+}
+
+.clover-leaf2 {
+    border-radius: 75px 50px 75px 0px;
+}
+
+.clover-leaf3 {
+    border-radius: 75px 0px 75px 50px;
+}
+
+.clover-leaf4 {
+    border-radius: 0px 75px 50px 75px;
+}
+
+
+.circle1 {
+    border-radius: 100px 0px 0px 0px;
+}
+
+.circle2 {
+    border-radius: 0px 100px 0px 0px;
+}
+
+.circle3 {
+    border-radius: 0px 0px 0px 100px;
+}
+
+.circle4 {
+    border-radius: 0px 0px 100px 0px;
+}
+
+.d-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding: 20px;
+    margin: 10px;
+}
+
+.circlee {
+    width: 100px;
+    border: 10px solid red;
+    height: 100px;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.l-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin: -10px;
+
+}

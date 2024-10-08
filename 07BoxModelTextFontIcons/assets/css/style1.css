@@ -1,0 +1,43 @@
+*{
+    margin: 0p;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #FFEFE2;
+}
+
+.custom-select{
+    background-color: #F39C11;
+    color: white;
+    width: 800px;
+    box-shadow: 3px 3px 17px rgb(93, 93, 93);
+    padding: 50px 100px;
+    height: 400px;
+    margin: 100px auto;
+    
+}
+
+
+h1{
+    text-align: center;
+}
+
+form{
+    text-align: center;
+}
+
+
+select{
+
+    background-color: #2E3F51;
+height: 40px;
+    color: white;
+    width: 400px;
+    border-radius: 3px;
+    /* border: 1px solid  #2E3F51; */
+    
+ 
+}

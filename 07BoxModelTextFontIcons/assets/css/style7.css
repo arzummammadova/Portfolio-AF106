@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Alex Brush';
+    src: url('../fonts/AlexBrush-Regular.woff') format('woff'),
+        url('../fonts/AlexBrush-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.title{
+ font-size: 140px;
+ 
+}
+
+
+.text{
+    font-family: 'Alex Brush';
+}
+main{
+    background-image: url(../images/letter.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 520px;
+}
+
+.texts{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 200px 80px;
+    text-align: center;
+
+}
+
+.yellow{
+    color: #9C7D45;
+}
+.text-desc{
+   font-size: 30px;
+  font-weight: bolder;
+   letter-spacing: 5px;
+   margin: -60px;
+   font-variant: all-petite-caps;
+
+}
+
+.sub-title{
+    font-size: 30px;
+    letter-spacing: 5px;
+    margin: -20px;
+    font-variant: all-petite-caps;
+    font-weight: 600;
+}
+.sub-titleb{
+    margin: 20px;
+    font-size: 32px;
+    font-variant: unicase;
+    letter-spacing: 5px;
+    word-spacing: 4px;
+    font-weight: 500;
+}
+
+.sub{
+    font-size: 30px;
+}
+
+footer{
+    background-color: #92754C;
+    color: white;
+    letter-spacing: 1px;
+    padding: 20px;
+    text-align: center;
+    word-spacing: 3px;
+    text-transform: uppercase;
+}

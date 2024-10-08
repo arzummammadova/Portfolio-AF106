@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.boxes{
+    max-width: 900px;
+   margin: 0 auto;
+}
+.boxes div{
+
+    width: 300px;
+    height: 230px;
+    margin: 40px;
+    display: inline-block;
+ 
+    padding: 60px 60px ;
+    border: 3px solid red;
+  
+}
+
+.boxes div:first-child{
+    background-color: #66F096;  
+     border-radius: 90px;
+}
+.boxes div:nth-child(2){
+    background-color: orange;
+    border-radius: 25% 10%;
+}
+.boxes div:nth-child(3){
+    background-color: aqua;
+    border-radius: 35px 10em 10%;
+}
+
+.boxes div:nth-child(4){
+    background-color: #9ED9E7;
+    border-radius: 50px 50% 50cm 50em;
+}
+.box-header{
+text-decoration: bold;
+
+}
+
+p{
+    margin-top: 40px;
+    font-size: 17px;
+}
