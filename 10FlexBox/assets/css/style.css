@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --maincolor: #2F2F2F;
+    --maincolordark: #1e1e1e;
+    --text-color: white;
+
+    --box-1-bg: #E9165E;
+    --box-1-border: #D11356;
+
+    --box-2-bg: #9C17B4;
+    --box-2-border: #8A1A9E;
+
+    --box-3-bg: #6F3CE7;
+    --box-3-border: #7D43FC;
+
+    --box-4-bg: #4A89FB;
+    --box-4-border: #3979E7;
+
+    --box-5-bg: #179aae;
+    --box-5-border: #1AB9D3;
+
+    --box-6-bg: #7CAE3B;
+    --box-6-border: #86C53E;
+
+    --box-7-bg: #B6C61F;
+    --box-7-border: #CADD08;
+
+    --box-8-bg: #E2D317;
+    --box-8-border: #F8E612;
+
+    --box-9-bg: #E4AC00;
+    --box-9-border: #FCBF01;
+
+    --box-10-bg: #E44D0A;
+    --box-10-border: #FD5607;
+}
+
+body {
+    background-color: var(--maincolor);
+    color: var(--text-color);
+    font-family: "Lato", sans-serif;
+}
+
+.container {
+    max-width: 95%;
+    margin: 10rem auto;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.flex-box {
+    background-color: black;
+    width: 33.33%;
+    border: 0.5rem solid var(--maincolordark);
+    display: flex;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.center {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.end {
+    justify-content: flex-end;
+}
+
+.evenly {
+    justify-content: space-evenly;
+}
+
+.box {
+    font-weight: 700;
+    font-size: 3rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-1 {
+    background-color: var(--box-1-bg);
+    border: 5px solid var(--box-1-border);
+}
+
+.box-2 {
+    background-color: var(--box-2-bg);
+    border: 5px solid var(--box-2-border);
+}
+
+.box-3 {
+    background-color: var(--box-3-bg);
+    border: 5px solid var(--box-3-border);
+}
+
+.box-4 {
+    background-color: var(--box-4-bg);
+    border: 5px solid var(--box-4-border);
+}
+
+.box-5 {
+    background-color: var(--box-5-bg);
+    border: 5px solid var(--box-5-border);
+}
+
+.box-6 {
+    background-color: var(--box-6-bg);
+    border: 5px solid var(--box-6-border);
+}
+
+.box-7 {
+    background-color: var(--box-7-bg);
+    border: 5px solid var(--box-7-border);
+}
+
+.box-8 {
+    background-color: var(--box-8-bg);
+    border: 5px solid var(--box-8-border);
+}
+
+.box-9 {
+    background-color: var(--box-9-bg);
+    border: 5px solid var(--box-9-border);
+}
+
+.box-10 {
+    background-color: var(--box-10-bg);
+    border: 5px solid var(--box-10-border);
+}
