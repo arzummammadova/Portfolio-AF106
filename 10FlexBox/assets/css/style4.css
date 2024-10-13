@@ -68,7 +68,7 @@ body {
     background-color: black;
     width: 30%;
     /* border: 0.4rem solid var(--maincolordark); */
-    border: 0.4 rem solid var(--border);
+    border: 0.4rem solid var(--border);
     display: flex;
     flex-wrap: wrap;
 }
