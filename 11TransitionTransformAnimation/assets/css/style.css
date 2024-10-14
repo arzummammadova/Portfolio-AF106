@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+}
+
+.road {
+    background: url(../images/arka.jpg);
+    height: 530px;
+    width: 960px;
+    background-size: cover;
+    position: absolute;
+    animation-name: move;
+    animation-direction: normal;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    overflow: hidden;
+}
+
+.car {
+    background: url(../images/arac.png);
+    width: 420px;
+    height: 150px;
+    position: absolute;
+    top: 280px;
+    left: 100px;
+    animation-name: car;
+    animation-direction: normal;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.whell {
+    background: url(../images/teker.png);
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    position: absolute;
+    top: 79px;
+    animation-name: rotate;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+}
+
+.whell:nth-child(1) {
+    left: 39px;
+}
+
+.whell:nth-child(2) {
+    left: 306px;
+}
+
+@keyframes rotate {
+    from {
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: -960px 0;
+    }
+    51% {
+        background-position: -960px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes car {
+    0% {
+        left: 90px;
+        top: 280px;
+        transform: scaleX(1);
+    }
+    50% {
+        left: 1000px;
+        top: 280px;
+        transform: scaleX(1);
+    }
+    51% {
+        transform: scaleX(-1);
+        top: 380px;
+    }
+    100% {
+        left: -380px;
+        top: 370px;
+        transform: scaleX(-1);
+    }
+}
