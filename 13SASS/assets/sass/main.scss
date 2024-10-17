@@ -1,0 +1,246 @@
+@import 'variables';
+@import 'reset';
+@import 'mixins';
+
+
+.btn-hover {
+    background-color: map-get($map: $mainColors, $key: bg-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-menu {
+    @include flex();
+    gap: 3rem;
+    padding: 0.8rem;
+
+    .logo {
+        &_link {
+            font-size: 1.8rem;
+            color: map-get($map: $mainColors, $key: text-color);
+        }
+    }
+
+    nav {
+        @include flex(space-between);
+        flex: 1;
+
+        .nav {
+            &_list {
+                display: flex;
+                gap: 2.5rem;
+
+                a:hover {
+                    color: map-get($map: $mainColors, $key: text-color);
+                }
+            }
+        }
+
+
+    }
+
+    .card-btn {
+        border: 1px solid map-get($map: $mainColors, $key: bg-color);
+        padding: 0.7rem 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        span {
+            padding: 1px 5px;
+            font-size: 1.3rem;
+            border-radius: 100%;
+            color: map-get($map: $mainColors, $key: maincolor);
+            background-color: map-get($map: $mainColors, $key: text-color);
+        }
+
+        &:hover {
+            //   background-color: map-get($map: $mainColors, $key: bg-color);
+            //   color: #fff;
+            //   cursor: pointer;
+            @extend .btn-hover;
+        }
+
+    }
+
+
+}
+
+.burger-menu {
+    display: none;
+}
+
+.nav_list_item {
+    &:nth-child(1) a {
+        font-size: 1.3rem;
+        color: map-get($map: $mainColors, $key: text-color);
+    }
+
+    .item {
+        color: map-get($map: $mainColors, $key: dark-grey);
+        font-size: 1.3rem;
+    }
+
+    &:nth-child(2) a {
+        @extend .item;
+    }
+
+    &:nth-child(3) a {
+        @extend .item;
+    }
+}
+
+
+// hero-section
+
+#hero {
+    padding: 8rem;
+    background-color: map-get($map: $mainColors, $key: bg-color);
+    color: map-get($map: $mainColors, $key: maincolor);
+
+    .hero {
+        max-width: 40rem;
+        @include flex($direction: column);
+        margin: 0 auto;
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            margin-top: 2rem;
+            color: map-get($map: $mainColors, $key: dark-grey);
+        }
+    }
+}
+
+
+//cardlar
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding-top: 6rem;
+
+    .card {
+        position: relative;
+        @include flex($direction: column);
+        width: $xlarge-width;
+        height: 290px;
+        border-radius: 0.5rem;
+        border: 1px solid map-get($map: $mainColors, $key: bg-color-img);
+
+        .box {
+            width: 100%;
+            height: 16rem;
+            color: map-get($map: $mainColors, $key: dark-grey);
+            font-size: 3rem;
+            font-weight: 300;
+
+            @include flex();
+            background-color: map-get($map: $mainColors, $key: bg-color-img);
+
+        }
+
+        h3,
+        p,
+        button {
+            margin-top: 1.6rem;
+        }
+
+        span {
+            color: white;
+            background-color: black;
+            position: absolute;
+            top: .4rem;
+            padding: .3rem .6rem;
+            font-size: 1.2rem;
+            right: 1rem;
+            border-radius: 0.3rem;
+
+
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.4rem;
+        }
+
+        .dif-header {
+            margin-top: 14px;
+        }
+
+        .rating {
+            margin: 0px;
+            color: map-get($map: $mainColors, $key: star);
+        }
+
+        .dif-price {
+            margin: 0px;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid black;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+
+            &:hover {
+                @extend .btn-hover;
+            }
+        }
+    }
+}
+
+
+footer{
+    @include flex();
+    background-color: map-get($map: $mainColors, $key:bg-color );
+    color: map-get($map: $mainColors, $key:maincolor );
+    padding: 6rem;
+    margin-top: 6rem;
+}
+
+@media (max-width: 992px) {
+    .nav-menu{
+        justify-content: space-between;
+    }
+    .nav-menu nav{
+        display: none;
+
+    }
+    .burger-menu {
+      display: block;
+      border: 1px solid map-get($map: $mainColors, $key:dark-grey );
+      padding:7px 10px;
+      border-radius: 8px;
+    }
+    .nav {
+      justify-content: space-between;
+      padding: 0 6rem;
+    }
+
+
+  }
+  
+  @media (max-width: 992px) {
+    .cards .card {
+        width:$large-width; 
+    }
+}
+
+@media (max-width: 690px) {
+    .cards .card {
+        width:$medium-width;  
+    }
+}
+
+@media (max-width: 540px) {
+    .cards .card {
+        width: $small-width; 
+    }
+}

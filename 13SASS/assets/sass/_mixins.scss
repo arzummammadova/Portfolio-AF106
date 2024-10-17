@@ -1,0 +1,11 @@
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+
+@function card-width($cards-per-row) {
+  @return (100% / $cards-per-row - 5rem); 
+}

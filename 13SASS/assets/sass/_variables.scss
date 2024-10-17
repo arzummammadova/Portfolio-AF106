@@ -1,0 +1,20 @@
+$mainColors: (
+    maincolor: #fdfdfd,
+    bg-color:#212529,
+    bg-color-img:#DEE1E6,
+    grey: #ededed,
+    text-color:black,
+    dark-grey: #8c8a8a,
+    star:#FFC107,
+);
+
+$card-margin: 3rem;
+$xlarge-width:calc(100%/4 - #{$card-margin});
+$large-width: calc(100% / 3 - #{$card-margin});
+$medium-width: calc(100% / 2 - #{$card-margin});
+$small-width: 100%;
+  
+// $mainFonts: (
+//     primary:'Roboto',
+//     default-size: 16px,
+// );
