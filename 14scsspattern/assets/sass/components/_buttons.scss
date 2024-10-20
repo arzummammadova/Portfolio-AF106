@@ -1,0 +1,47 @@
+@mixin button($width:33rem)
+{
+    background-color: transparent;
+    width: 33rem;
+    height: 5.4rem;
+
+    border-radius: 1rem;
+    border: 0.1rem solid $primary;
+    color: $primary;
+    margin-top: 4rem;
+    &:hover{
+        background-color: $primary;
+        color: $background;
+        transition: all 0.3s;
+    }
+   
+
+}
+
+.shop-btn{
+    background-color: $primary;
+    color: map-get($map: $mainColors, $key: background);;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    
+
+    img {
+        width: 2rem;
+        height: 2rem;
+    }
+
+ 
+}
+@media (max-width:756px) {
+    .shop-btn{
+        width: 100%;
+        margin-top: 4rem;
+        @include flex();
+        text-align: center;
+    }
+}

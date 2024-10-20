@@ -1,0 +1,23 @@
+nav {
+    .nav-menu {
+        @include flex();
+        gap: 4rem;
+
+        .menu-item {
+            &.active {
+                border: none;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid map-get($map: $mainColors, $key: primary);
+            }
+            a {
+                font-family: 'Raleway', sans-serif;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #header nav .nav-menu {
+        display: none;
+    }
+}

@@ -1,0 +1,87 @@
+#footer {
+    padding: 4rem 0rem;
+
+    .container {
+        .footer {
+
+
+            @include flex(space-between);
+
+            &__left {
+                width: 43%;
+
+                h3 {
+
+                    font-family: Didot;
+                    font-size: 3rem;
+                    font-weight: 400;
+                    line-height: 58px;
+                    text-transform: capitalize;
+
+                }
+
+            }
+
+            &__right {
+                width: 57%;
+                text-transform: lowercase;
+
+                p {
+                    width: 40%;
+                    font-size: 1.4rem;
+                    color: map-get($map: $textColors, $key: footer);
+                }
+
+                a {
+                    font-size: 1.4rem;
+                    color: map-get($map: $textColors, $key: footer);
+                }
+
+                @include flex(space-between, start, row, 1rem);
+
+            }
+
+
+        }
+
+        .copyright {
+            font-size: 1.4rem;
+            margin-top: 3rem;
+            text-transform: capitalize;
+        }
+    }
+
+
+}
+
+
+
+@media (max-width:768px) {
+
+
+#footer {
+    .container {
+        .footer {
+
+            flex-direction: column;
+            align-items: start;
+
+            &__left {
+                width: 100%;
+
+            }
+
+            &__right {
+                width: 100%;
+                flex-direction: column;
+
+                p {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+}
