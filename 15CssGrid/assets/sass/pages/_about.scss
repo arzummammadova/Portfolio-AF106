@@ -1,0 +1,309 @@
+
+/* 
+ABOUT SECTION WITH RESPONSIVE */
+
+#about {
+    background-color: var(--textcolor);
+    color: var(--white);
+}
+
+.about {
+    display: grid;
+    padding: 5rem 0rem;
+
+    grid-template-columns: 45.5% 54.5%;
+    gap: 5rem;
+}
+
+.about-left {
+    width: 100%;
+}
+
+.about-header {
+    font-size: 4.8rem;
+}
+
+.about-title {
+    font-size: 1.8rem;
+    width: 100%;
+    margin-top: 3rem;
+    line-height: 2.5rem;
+
+}
+
+.about-title a {
+    font-weight: 600;
+    color: var(--violet);
+}
+
+.about-right {
+    width: 100%;
+    position: relative;
+}
+
+.about-right figure img {
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+
+}
+.circle {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 100%;
+}
+
+.circle-violet {
+    background-color: var(--violet);
+    position: absolute;
+    bottom: -5px;
+    right: 170px;
+    z-index: 1;
+}
+
+.circle-orange {
+    background-color: var(--orange);
+    position: absolute;
+    bottom: -5px;
+    right: 70px;
+}
+
+@media (max-width: 768px) {
+    .about {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-right figure img {
+        width: 67%;
+        height: 45rem;
+        object-fit: cover;
+    }
+
+
+}
+
+
+/* 
+WHYUS WITH RESPONSIVE */
+
+
+.whyus {
+    padding: 3rem 0rem;
+}
+
+.whyus-cards-container {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 3rem;
+}
+
+.whyus-card {
+    border: 0.2rem solid var(--textcolor);
+    border-radius: 2rem;
+    padding: 3rem;
+
+}
+
+.whyus-card-title {
+    margin: 2rem 0rem;
+}
+
+.whyus-title {
+    font-size: 4.9rem;
+
+}
+
+.icon {
+    width: 9.5rem;
+    height: 9.5rem;
+
+    padding-top: 2rem;
+    padding-left: 1.8rem;
+    border-radius: 50%;
+}
+
+
+.violet {
+    background-color: var(--violet);
+}
+
+.yellow {
+    background-color: var(--yellow);
+}
+
+.orange {
+    background-color: var(--orange);
+}
+
+.blue {
+    background-color: #7CC5C1;
+}
+
+.icon img {
+    width: 67%;
+    height: 70%;
+    display: flex;
+}
+
+figure svg {
+    fill: white;
+    width: 6rem;
+    height: 6rem;
+
+}
+
+@media (max-width: 768px) {
+
+    .whyus-cards-container {
+
+        grid-template-columns: repeat(1, auto);
+
+    }
+
+}
+
+
+/* speakers WITH RESPONSIVE */
+
+
+#speakers {
+    padding: 5rem 0rem;
+}
+
+.speakers {
+    h1 {
+        font-size: 4.8rem;
+        margin: 4rem 0rem;
+    }
+    
+}
+
+
+.speakersbox {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+        "speaker1 speaker2 speaker3"
+        "speaker4 speaker2 speaker6"
+        "speaker4 speaker5 speaker6";
+    grid-gap: 20px;
+
+    margin: 0 auto;
+    height: 85rem;
+}
+
+.speaker {
+
+    border-radius: 2.5rem;
+
+}
+
+.speaker img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2.5rem;
+}
+
+.speaker p {
+    font-size: 1.8rem;
+    color: var(--white);
+    margin: 15px 0;
+}
+
+.speaker h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+
+.speaker1 {
+    grid-area: speaker1;
+    background-color: var(--violet);
+    color: var(--white);
+    padding: 2rem;
+}
+
+.speaker2 {
+    grid-area: speaker2;
+}
+
+.speaker3 {
+    grid-area: speaker3;
+    background-color: var(--textcolor);
+    color: #fff;
+    padding: 2rem;
+}
+
+.speaker4 {
+    grid-area: speaker4;
+
+    color: var(--white);
+}
+
+.speaker5 {
+    grid-area: speaker5;
+    padding: 2rem;
+    background-color: var(--orange);
+}
+
+.speaker6 {
+    grid-area: speaker6;
+
+
+}
+
+@media (max-width:990px) {
+    .speakersbox {
+        max-width: 800px;
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-rows: 2fr 1fr 0.5fr 2fr; */
+        grid-template-areas:
+            "speaker1 speaker2 "
+
+            "speaker4 speaker2 "
+            "speaker4 speaker5"
+
+
+
+            "speaker3 speaker3"
+            "speaker6 speaker6";
+        grid-gap: 20px;
+
+        margin: 0 auto;
+        height: 170rem;
+    }
+}
+
+@media (max-width:768px) {
+    .speakersbox {
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr 2fr 1fr 1fr 2fr;
+        height: 200rem;
+        grid-template-areas:
+            "speaker1  "
+            "speaker4  "
+
+            " speaker2 "
+
+
+            "speaker3 "
+            " speaker5 "
+            "speaker6 "
+
+
+
+    }
+}
+

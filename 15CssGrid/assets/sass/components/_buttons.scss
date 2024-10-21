@@ -1,0 +1,16 @@
+.about-button {
+    color: var(--white);
+    background-color: transparent;
+    border: 3px solid var(--white);
+    border-radius: 2.5rem;
+    padding: 1.4rem 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 3rem;
+
+    &:hover {
+        border: 3px solid var(--textcolor);
+        transition: all 0.2s;
+    }
+}

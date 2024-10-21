@@ -1,0 +1,34 @@
+footer {
+    color: var(--white);
+    font-size: 1.5rem;
+    background-color: var(--footerbg);
+
+    .container {
+        .footer {
+            max-width: 40rem;
+            text-align: center;
+            display: grid;
+            grid-template-rows: repeat(2, auto);
+            gap: 7rem;
+            padding: 6rem 0rem;
+            margin: 0 auto;
+        }
+
+        .footer-bottom {
+            display: grid;
+            font-size: 1.4rem;
+
+
+            grid-template-columns: repeat(3, auto);
+
+            a {
+                font-size: 1.3rem;
+                display: grid;
+                color: var(--violet);
+                text-decoration: underline;
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,40 @@
+/* HEADER WITH RESPONSIVE */
+
+header {
+    padding: 3rem 0;
+    gap: 2rem;
+}
+
+.nav-menu {
+    display: grid;
+    max-width: 40rem;
+    grid-template-columns: repeat(3, auto);
+}
+
+.nav-menu-item a:hover {
+    color: var(--orange);
+}
+
+.nav-menu-item a:active {
+    color: var(--violet);
+}
+
+.active {
+    color: var(--violet);
+}
+
+.burger-menu {
+    display: none;
+}
+
+@media (max-width: 1008px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+
+}
