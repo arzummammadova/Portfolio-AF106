@@ -1,7 +1,7 @@
 .about-button {
     color: var(--white);
     background-color: transparent;
-    border: 3px solid var(--white);
+    border: 0.3rem solid var(--white);
     border-radius: 2.5rem;
     padding: 1.4rem 3.5rem;
     text-transform: uppercase;
@@ -10,7 +10,7 @@
     margin-top: 3rem;
 
     &:hover {
-        border: 3px solid var(--textcolor);
+        border: 0.3rem solid var(--textcolor);
         transition: all 0.2s;
     }
 }
