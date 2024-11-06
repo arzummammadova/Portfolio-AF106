@@ -41,7 +41,7 @@ console.log(removeDuplicate(arr));
 // console.log(smallCount(num, arr));
 
 
-// // 4.customers  array-in icindeki objectlerdeki hobbileri array-in reduce metodundan istifade ederek yazdirmaq.
+// // // 4.customers  array-in icindeki objectlerdeki hobbileri array-in reduce metodundan istifade ederek yazdirmaq.
 // const customers = [
 //   {
 //     name: "Tyrone",
@@ -69,14 +69,13 @@ console.log(removeDuplicate(arr));
 //     return acc.concat(item.personal.hobbies);
   
 // }, []);
-
-  
-
 // console.log(hobbiesarr);
 
 
-// 5.5.Random reqemlerden ibaret array yaratmaq,en boyuk ve en kicik elemanlar,ortalamani,toplami ve elemanlarin kvadratini tapmaq(Math metodlarindan istifade ederek)
 
+// 5.5.Random reqemlerden ibaret array yaratmaq,en boyuk ve en kicik elemanlar,ortalamani,toplami ve elemanlarin kvadratini tapmaq(Math metodlarindan istifade ederek)
+// function randomArrayOperartions () {
+  
 // let arr = [];
 // const arrlength = 10;
 
@@ -91,13 +90,22 @@ console.log(removeDuplicate(arr));
 // let average = sum / arrlength;
 
 // let square = arr.map(element => Math.pow(element, 2));
-
-// console.log(`Array: ${arr}`);
-// console.log(`Ən böyük element: ${maxelement}`);
-// console.log(`Ən kiçik element: ${minelement}`);
-// console.log(`Cəm: ${sum}`);
-// console.log(`Ortalama: ${average}`);
-// console.log(`Kvadratlar: ${square}`);
+// return{
+//   array:arr,
+//   maxelement:maxelement,
+//   minelement:minelement,
+//   sum:sum,
+//   average:average,
+//   square:square
+// }
+// }
+// const result=randomArrayOperartions();
+// console.log(`Array: ${result.array}`);
+// console.log(`Ən böyük element: ${result.maxelement}`);
+// console.log(`Ən kiçik element: ${result.minelement}`);
+// console.log(`Cəm: ${result.sum}`);
+// console.log(`Ortalama: ${result.average}`);
+// console.log(`Kvadratlar: ${result.square}`);
 
 
 
@@ -124,6 +132,4 @@ console.log(removeDuplicate(arr));
 // console.log(`emergencyContactName: ${emergencyContactName}`);
 // console.log(`emergencyRelation: ${emergencyRelation}`);
 
-// Output:
-// name: "Farid Ali", department: "Engineering", email: "farid.ali@example.com",
-// phone: "555-1234", emergencyContactName: "Far For", emergencyRelation: "Spouse"
+
