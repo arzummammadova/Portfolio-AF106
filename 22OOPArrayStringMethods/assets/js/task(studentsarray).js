@@ -399,7 +399,7 @@ function average(students) {
 
   console.log(`Ortalamasi en boyuk olan telebeninin ${maxaverage.name} ${maxaverage.surname}`);
 }
-
+// - Parolu ən uzun olan tələbənin username və adını çapa verin
 function longPassword(students) {
   let longPassword = students[0];
 
@@ -469,7 +469,7 @@ function teacherbyid(students) {
   students.forEach(student => {
     const teacher = student.teacher.find(teacher => teacher.id === id)
     if (teacher) {
-      console.log(`telebe :${student.name} Muellim:${teacher.name}`)
+      console.log(`telebe :${student.name}        Muellim:${teacher.name} `)
     }
   })
 }
@@ -603,7 +603,7 @@ printAllelements(students);
 // failedStudents(students);
 // maxHobbies(students);
 // average(students);
-// console.log(longPassword(students));
+// longPassword(students);
 // boyfriend(students);
 // ageTeacher(students);
 // stipwithdollar(students);

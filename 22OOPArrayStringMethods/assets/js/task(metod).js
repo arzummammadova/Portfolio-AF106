@@ -5,23 +5,23 @@
 // console.log(getFirst([1, 73, 99, 20], 2)) -> [1, 73]
 // console.log(getFirst([1, 73, 99, 20], 0)) -> []
 // console.log(getFirst([1, 73, 99, 20], 4)) -> [1, 73, 99, 20]
-// const getFirst=function (array,n) {
-//     if (array === null || array === undefined) {
-//         return 0;
+const getFirst=function (array,n) {
+    if (array === null || array === undefined) {
+        return 0;
 
-//     }
-//     if (n === null || n === undefined) {
-//         return array[0];
-//     }
-//     if(n < 0){
-//         return [];
-//     }
-//     return array.slice(0, n);
-// }
-// console.log(getFirst([1, 73, 99, 20])) ;
-// console.log(getFirst([1, 73, 99, 20], 2)) ;
-// console.log(getFirst([1, 73, 99, 20], 0));
-// console.log(getFirst([1, 73, 99, 20], 4)) ;
+    }
+    if (n === null || n === undefined) {
+        return array[0];
+    }
+    if(n < 0){
+        return [];
+    }
+    return array.slice(0, n);
+}
+console.log(getFirst([1, 73, 99, 20])) ;
+console.log(getFirst([1, 73, 99, 20], 2)) ;
+console.log(getFirst([1, 73, 99, 20], 0));
+console.log(getFirst([1, 73, 99, 20], 4)) ;
 
 
 // 2. Write a simple JavaScript function to join all elements of the following array into a string.
@@ -73,8 +73,19 @@
 
 // }
 
-
 // console.log(clear([0, 1, false, 2, undefined, '', 3, null]));
+
+// 5. Write a method that returns a duplicate-free array.
+// console.log(clearDuplicate([1, 2, 1, 2, 3])); -> [1, 2, 3]
+// console.log(clearDuplicate(['a', 2, 'd', 2, 'a', 14, 14, 's', false])); -> ['a', 2, 'd', 14, 's', false]
+ 
+
+// const removeduplicate=function(array){
+//     return [...new Set(array)];
+// }
+// console.log(removeduplicate([1,2,1,2,3]));
+// console.log(removeduplicate(['a', 2, 'd', 2, 'a', 14, 14, 's', false]))
+
 
 
 // 6. Write a function that compares two arrays and returns true if they are identical.
