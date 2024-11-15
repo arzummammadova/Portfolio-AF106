@@ -10,7 +10,7 @@ cardImage.style.position = "relative";
 
 
 const img = document.createElement("img");
-img.src = "https://picsum.photos/seed/picsum/400/300";
+img.src = "https://picsum.photos/seed/picsum/400/230";
 
 img.alt = "random image";
 
