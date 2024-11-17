@@ -1,0 +1,32 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: darkblue;
+ 
+
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.clock{
+    color: white;
+    border: .3rem solid white;
+    font-family: sans-serif;
+    padding: 3rem;
+}
+
+.container{
+    max-width: 50rem;
+    margin:20rem auto;
+}
+
+p{
+    font-size: 5rem;
+    text-align: center;
+}
