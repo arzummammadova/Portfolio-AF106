@@ -1,0 +1,21 @@
+.title h1{
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ff8b00;
+    font-family: "Oswald", serif;
+    font-weight: 500;
+
+}
+.title .start{
+    color: grey;
+    text-align: center;
+    width: 47%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+}
+
+.title{
+    text-align: center;
+    margin: 0 auto;
+}

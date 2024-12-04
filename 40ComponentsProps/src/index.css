@@ -1,0 +1,25 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  background-color: #222222;
+
+}
+
+html{
+  font-size: 62.5%;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+
+li{
+  list-style: none;
+}
+

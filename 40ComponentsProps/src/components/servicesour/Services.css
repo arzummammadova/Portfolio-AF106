@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+.cardContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 100px auto;
+}
+
+.card {
+  width: calc(100% / 3 - 2rem);
+  height: 270px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+}
+
+i {
+  font-size: 40px;
+  position: absolute;
+  top: 40%;
+}
+
+.circle-i {
+  background-color: #333333;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.iconskate {
+  color: #ff8b00;
+}
+
+.card-title {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: white;
+  font-family: "Oswald", serif;
+}
+
+.card-desc {
+  font-size: 1.7rem;
+  color: #939393;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  color: rgba(45, 101, 192, 0.915);
+}
+
+.center {
+  width: 20%;
+  text-align: center;
+}
+
+.carttt {
+  margin-top: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#services h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  line-height: 10rem;
+  color: #ff8b00;
+  font-family: "Oswald", serif;
+  font-weight: 500;
+}
+
+#services .start {
+  color: grey;
+  text-align: center;
+  width: 45%;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 992px) {
+  .cardContainer {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  i {
+    position: static;
+    font-size: 30px;
+    margin-bottom: 1rem;
+  }
+
+  .circle-i {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .card-desc {
+    font-size: 1.4rem;
+  }
+}
