@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaCheck } from "react-icons/fa";
 
 const PaymentContainer = styled.div`
   background-color: #f9f9f9;
   padding: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 `;
@@ -16,7 +18,7 @@ const PlanCard = styled.div`
   padding: 20px;
   width: 300px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: start;
 
   h3 {
     font-size: 1.5em;
@@ -36,23 +38,25 @@ const PlanCard = styled.div`
 
     li {
       font-size: 0.9em;
-      margin: 5px 0;
+      margin: 10px 0;
       color: #666;
     }
   }
+`;
 
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+const Button = styled.button`
+  margin-top: 20px;
+  width: 100%;
+  margin-top:20px;
+  padding: 10px 20px;
+  color: ${(props) => (props.index === 1 ? "#fff" : "#333")};
+  background-color: ${(props) => (props.index === 1 ? "#007bff" : "#fff")};
+  border: ${(props) => (props.index === 1 ? "none" : "1px solid #e0e0e0")};
+  border-radius: 4px;
+  cursor: pointer;
 
-    &:hover {
-      background-color: #0056b3;
-    }
+  &:hover {
+    background-color: ${(props) => (props.index === 1 ? "#0056b3" : "#f0f0f0")};
   }
 `;
 
@@ -67,6 +71,8 @@ const Pay = () => {
         '5GB storage',
         'Unlimited public projects',
         'Community access',
+        'Dedicated support',
+        'Free linked domain',
       ],
     },
     {
@@ -109,10 +115,13 @@ const Pay = () => {
             </p>
             <ul>
               {plan.features.map((feature, i) => (
-                <li key={i}>{feature}</li>
+                <li key={i}>
+                  <FaCheck style={{ color: "blue", marginRight: "10px" }} />
+                  {feature}
+                </li>
               ))}
             </ul>
-            <button>Choose Plan</button>
+            <Button index={index}>Choose Plan</Button>
           </PlanCard>
         ))}
       </PaymentContainer>

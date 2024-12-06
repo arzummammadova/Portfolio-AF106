@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { FaQuoteLeft } from 'react-icons/fa';
 
 const TestimonialsContainer = styled.div`
@@ -39,10 +40,10 @@ const TestimonialCard = styled.div`
   position: relative;
 
   .icon {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 24px;
+    // position: absolute;
+    // top: 15px;
+    // left: 15px;
+    font-size:60px;
     color: #3498db;
   }
 
@@ -59,6 +60,10 @@ const TestimonialCard = styled.div`
     font-style: italic;
   }
 `;
+const Testimonialsheader=styled.div`
+justify-content:center;
+gap:20px;
+display: flex;`
 
 const Testimonials = () => {
   const testimonials = [
@@ -81,9 +86,16 @@ const Testimonials = () => {
       <TestimonialList>
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index}>
+          <Testimonialsheader>
             <FaQuoteLeft className="icon" />
-            <p>{testimonial.message}</p>
+            <div className="right">
+                <p>{testimonial.message}</p>
             <span>- {testimonial.client}</span>
+            </div>
+          
+          </Testimonialsheader>
+            
+           
           </TestimonialCard>
         ))}
       </TestimonialList>
