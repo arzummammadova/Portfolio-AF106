@@ -1,0 +1,65 @@
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  button{
+    background-color: rgb(126, 134, 114);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: none;
+  }
+  .adding{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .addTask{
+    padding: 12px 15px;
+    width: 80%;
+    border-radius: 8px;
+    
+  }
+  li{
+    list-style: none;
+  }
+  h1{
+  text-align: center;
+    color:red;
+  }
+  
+
+  li{
+    display: flex;
+    margin-top: 5px;
+    justify-content: space-between;
+  }
+
+  .delete{
+    background-color: rgb(198, 126, 126);
+    padding: 10px 12px;
+  }
+
+  button,a,input{
+    cursor: pointer;
+  }
+
+/* input [type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+} */
+
+.edit{
+    background-color: rgb(222, 109, 188);
+    color: black;
+    padding: 10px 12px;
+    margin-left: 3px;
+}

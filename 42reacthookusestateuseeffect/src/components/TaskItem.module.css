@@ -1,0 +1,48 @@
+
+.adding{
+  display: flex;
+  justify-content: space-between;
+}
+
+.addTask{
+  padding: 12px 15px;
+  width: 80%;
+  border-radius: 8px;
+  
+}
+li{
+  list-style: none;
+}
+h1{
+text-align: center;
+  color:red;
+}
+
+
+li{
+  display: flex;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+
+.delete{
+  background-color: rgb(198, 126, 126);
+  padding: 10px 12px;
+}
+
+button,a,input{
+  cursor: pointer;
+}
+
+/* input [type="checkbox"]{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+} */
+
+.edit{
+  background-color: rgb(222, 109, 188);
+  color: black;
+  padding: 10px 12px;
+  margin-left: 3px;
+}
