@@ -1,0 +1,80 @@
+.product{
+
+    display: flex;
+    gap:10px;
+   width:calc(100% / 3 - 2rem);
+}
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin-top: 2rem;
+    width: 100%;
+    gap: 2rem;
+   
+    flex: left;
+    max-width: 70%;
+    margin: 0 auto;
+}
+.delete{
+    background-color: rgba(162, 74, 230, 0.578);
+    color: white;
+    margin-right: 10px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+}
+.create{
+    padding: 15px 20px;
+    background-color: rgb(97, 109, 240);
+    color: white;
+    margin-top: 2rem;
+}
+
+.reset{
+    padding: 15px 20px;
+    background-color: rgb(93, 168, 189);
+    color: white;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+.edit{
+    background-color: rgba(42, 84, 42, 0.507);
+    border-radius: 1rem;
+    padding: 0.4rem 0.8rem;
+    color: white;
+}
+.price{
+    font-weight: 600;
+}
+/* .container{
+    position: relative;
+} */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+img{
+    width: 40%;
+    height: 100%;
+}
+
+button{
+    border: none;
+ 
+}
+
+.spinner{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    font-size: 20px;
+    padding: 20px;
+    
+}
+
