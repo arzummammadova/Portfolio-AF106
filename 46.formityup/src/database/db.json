@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": "3b02",
+      "name": "salam",
+      "lastname": "mammadovaa",
+      "username": "arzuui",
+      "email": "salamssd@mail.ru",
+      "password": "Secure2024@",
+      "confirmpassword": "Secure2024@"
+    },
+    {
+      "id": "6853",
+      "name": "arzu",
+      "lastname": "mammadovaa",
+      "username": "amin2005",
+      "email": "aminmasm@gmail.com",
+      "password": "Secure2024@",
+      "confirmpassword": "Secure2024@"
+    },
+    {
+      "id": "5268",
+      "name": "arzu",
+      "lastname": "mammadovaa",
+      "username": "amin2005",
+      "email": "amin2005@gmail.com",
+      "password": "Secure22024@",
+      "confirmpassword": "Secure22024@",
+      "isLogin": false
+    },
+    {
+      "id": "0c65",
+      "name": "arzushka",
+      "lastname": "mammadovaa",
+      "username": "arzushka",
+      "email": "arzui@gmail.com",
+      "password": "Secure2024@",
+      "confirmpassword": "Secure2024@",
+      "isLogin": false
+    },
+    {
+      "id": "942a",
+      "name": "amin",
+      "lastname": "mammadov",
+      "username": "aminikko",
+      "email": "aminmam@gmail.com",
+      "password": "Secure2024@",
+      "confirmpassword": "Secure2024@",
+      "isLogin": false
+    },
+    {
+      "id": "56e6",
+      "name": "amin",
+      "lastname": "mammadov",
+      "username": "amin02",
+      "email": "aminmam@gmail.com",
+      "password": "Secure2024@",
+      "confirmpassword": "Secure2024@",
+      "isLogin": false
+    }
+  ]
+}

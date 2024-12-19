@@ -1,0 +1,30 @@
+.header{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 6px;
+    font-family: sans-serif;
+    
+}
+
+a{
+    color: black!important;
+    text-decoration: none!important;
+    
+}
+
+a:hover{
+    color: rgb(88, 88, 196)!important;
+}
+
+li{
+    list-style: none!important;
+}
+
+
+.container{
+    max-width: 80%;
+    margin: 0 auto;
+}

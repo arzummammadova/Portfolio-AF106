@@ -1,0 +1,63 @@
+.login{
+    max-width: 550px;
+    margin: 0px auto;
+    border: 1px solid rgb(211, 190, 230);
+    background-color: rgb(211, 190, 230);
+    padding: 30px;
+   
+}
+body{
+    overflow-x: hidden;
+}
+span{
+    color: red;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+ 
+   
+}
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+  }
+.login-page{
+   
+    background-image: url("https://img.freepik.com/free-vector/realistic-style-technology-particle-background_23-2148426704.jpg?semt=ais_hybrid");
+    width: 100vw;
+    padding-bottom: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+}
+.colored-toast.swal2-icon-error {
+    background-color: #f27474 !important;
+  }
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+   
+   
+}
+
+label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input{
+    border: none;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+button{
+    border: none;
+    padding: 10px;
+    background-color: darkslateblue;
+    color: white;
+}
