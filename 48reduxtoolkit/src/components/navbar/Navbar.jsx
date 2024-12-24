@@ -13,10 +13,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LocalGroceryStoreSharpIcon from '@mui/icons-material/LocalGroceryStoreSharp';
-
+import axios from 'axios';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
+import { Logout } from '@mui/icons-material';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -48,7 +51,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -58,7 +60,48 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
+
+
 export default function Navbar() {
+ const [user,setUser]=useState();
+
+
+ const fetchUser=async()=>{
+
+  const response=await axios("http://localhost:3000/users")
+  try{
+    const loginuser=response.data.find((user)=>user.isLogin===true)
+    setUser(loginuser)
+  
+  }
+
+  catch{
+    error("not found")
+  }
+
+
+ }
+
+
+ const logout=async()=>{
+  if(user){
+   const uptadeuser={
+      ...user,isLogin:false
+      
+    }
+    await axios.put(`http://localhost:3000/users/${user.id}`,uptadeuser)
+    setUser(null)
+  }
+ }
+
+
+ useEffect(() => {
+  
+ fetchUser();
+ }, []);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -99,8 +142,20 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><Link to='/login'>Login</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to='register'>Register</Link></MenuItem>
+
+
+      {
+        user ? (<MenuItem onClick={() => {
+          // handleMenuClose();
+          logout();
+        }}><Link to='/'>Logout</Link></MenuItem>) :
+          (<div className="links">
+            <MenuItem onClick={handleMenuClose}><Link to='/login'>Login</Link></MenuItem>
+            <MenuItem onClick={handleMenuClose}><Link to='register'>Register</Link></MenuItem>
+          </div>)
+      }
+
+
     </Menu>
   );
 
@@ -156,19 +211,21 @@ export default function Navbar() {
     </Menu>
   );
 
+
   return (
     <Box sx={{ flexGrow: 1 }} >
-      <AppBar position="static" style={{backgroundColor:"#A19AD3"}}>
+      <AppBar position="static" style={{ backgroundColor: "#A19AD3" }}>
         <Toolbar>
-       
+
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            LOGO
+           <Link to='/'>LOGO</Link> 
           </Typography>
+      
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -178,6 +235,7 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <Link style={{color:"white",fontSize:"20px"}} to='/todo'>To-do list</Link>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -191,7 +249,7 @@ export default function Navbar() {
               color="inherit"
             >
               <Badge badgeContent={17} color="error">
-                <LocalGroceryStoreSharpIcon  />
+                <LocalGroceryStoreSharpIcon />
               </Badge>
             </IconButton>
             <IconButton

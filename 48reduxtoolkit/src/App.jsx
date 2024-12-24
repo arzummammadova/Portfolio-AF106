@@ -7,44 +7,45 @@ import Product from './Pages/Product'
 import Login from './Pages/Auth/Login/Login'
 import Register from './Pages/Auth/Register/Register'
 import './App.css'
+import Todolist from './Pages/Todolist'
+
 const App = () => {
 
-  const router=createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path:"/",
-      element:<Layout/>
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/contact",
+          element: <Contact />
+        },
+        {
+          path: "/product",
+          element: <Product />
+        },
+        {
+          path:"/todo",
+          element:<Todolist/>
+        }
+      ]
     },
     {
-      children:[
-        {
-          path:"/",
-          element:<Home/>
-        },
-        {
-          path:"/contact",
-          element:<Contact/>
-
-        },
-        {
-          path:"/product",
-          element:<Product/>
-        },
-        {
-          path:"/login",
-          element:<Login/>
-        },
-        {
-          path:"/register",
-          element:<Register/>
-        }
-
-      ]
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/register",
+      element: <Register />
     }
   ])
+
   return (
-    <RouterProvider router={router}/>
-      
-    
+    <RouterProvider router={router} />
   )
 }
 

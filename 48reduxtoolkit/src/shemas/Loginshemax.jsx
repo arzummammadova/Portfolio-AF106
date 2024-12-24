@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const login = yup.object().shape({
-    username: yup.string().required('name is required').matches(/[A-Z]/, 'must contain one uppercase')
+    username: yup.string().required('name is required')
     ,
     password: yup
     .string()

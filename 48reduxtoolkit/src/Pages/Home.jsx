@@ -6,10 +6,7 @@ import Footer from '../components/footer/Footer'
 const Home = () => {
   return (
     <div>
-
-       <Header/>
-       <Footer/>
-      
+      Home
     </div>
   )
 }
