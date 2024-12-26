@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+
 const initialState = {
   tasks: [],
+  products:[]
 };
 
 const todoSlice = createSlice({

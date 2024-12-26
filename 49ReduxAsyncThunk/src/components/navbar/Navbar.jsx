@@ -145,10 +145,19 @@ export default function Navbar() {
 
 
       {
-        user ? (<MenuItem onClick={() => {
+        user ? (
+
+          <div className="logout">
+             <p style={{padding:"10px"}}>{user.username}</p>
+            <MenuItem onClick={() => {
           // handleMenuClose();
           logout();
-        }}><Link to='/'>Logout</Link></MenuItem>) :
+        }}>
+        
+         <Link to='/'>Logout</Link>
+         </MenuItem> 
+          </div>
+       ) :
           (<div className="links">
             <MenuItem onClick={handleMenuClose}><Link to='/login'>Login</Link></MenuItem>
             <MenuItem onClick={handleMenuClose}><Link to='register'>Register</Link></MenuItem>
@@ -177,6 +186,7 @@ export default function Navbar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+     
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <FavoriteIcon />
