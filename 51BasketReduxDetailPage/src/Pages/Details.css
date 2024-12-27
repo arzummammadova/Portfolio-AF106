@@ -1,0 +1,118 @@
+
+  .product-details {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  .product-details__image {
+    flex: 1;
+    margin-right: 30px;
+  }
+  
+  .product-details__image-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .product-details__info {
+    flex: 2;
+  }
+  
+  .product-details__title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  .product-details__description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .product-details__rating {
+    margin-top: 10px;
+  }
+  
+  .product-details__rating-stars {
+    font-size: 20px;
+    color: #ff9900;
+  }
+  
+  .product-details__rating-count {
+    font-size: 14px;
+    color: #777;
+    margin-left: 10px;
+  }
+  
+  .product-details__price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .product-details__price-amount {
+    color: #2e8b57;
+  }
+  
+  .product-details__add-to-basket {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-details__add-to-basket:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-details__extra-info {
+    margin-top: 30px;
+  }
+  
+  .product-details__extra-info-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .product-details__extra-info-list {
+    list-style-type: none;
+    margin-top: 10px;
+  }
+  
+  .product-details__extra-info-item {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .product-details__extra-info-item strong {
+    color: #333;
+  }
+  
+  /* Footer Section */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .footer__text {
+    color: #777;
+  }
+  
