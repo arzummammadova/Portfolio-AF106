@@ -6,14 +6,37 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { ToastContainer, toast } from 'react-toastify';
 import './Cards.css';
 import StarIcon from '@mui/icons-material/Star';
-import { addWishList, removefromWishlist } from '../redux/wishlistSlice';
+import { addWishList, getWistListProducts, removefromWishlist  } from '../redux/wishlistSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const loadState = (key) => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    console.error('Error loading state from local storage:', err);
+    return undefined;
+  }
+};
+
+const saveState = (key, state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem(key, serializedState);
+  } catch (err) {
+    console.error('Error saving state to local storage:', err);
+  }
+};
+
 const Home = () => {
   const [user, setUser] = useState(null);
-  const [isfav, setIsFav] = useState({});
+  const [isFav, setIsFav] = useState(loadState('wishlistFavorites') || {});
   const products = useSelector((state) => state.products.products);
+  const wishlist = useSelector((state) => state.wishlist.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,7 +53,12 @@ const Home = () => {
   useEffect(() => {
     fetchUser();
     dispatch(getProducts());
+    dispatch(getWistListProducts());
   }, [dispatch]);
+
+  useEffect(() => {
+    saveState('wishlistFavorites', isFav); 
+  }, [isFav]);
 
   const fav = (product) => {
     dispatch(addWishList(product));
@@ -51,7 +79,7 @@ const Home = () => {
 
   const toggleFavorite = (productId, product) => {
     if (user) {
-      if (isfav[productId]) {
+      if (isFav[productId]) {
         removeFromWishlist(productId);
       } else {
         fav(product);
@@ -85,7 +113,7 @@ const Home = () => {
                   onClick={() => toggleFavorite(product.id, product)}
                   style={{ border: "none", backgroundColor: "transparent" }}
                 >
-                  {isfav[product.id] ? (
+                  {isFav[product.id] ? (
                     <FavoriteIcon className="hearticon" />
                   ) : (
                     <FavoriteBorderIcon className="hearticon" />
