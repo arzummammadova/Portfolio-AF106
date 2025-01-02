@@ -10,12 +10,13 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem!important;
 }
 
 a {
   text-decoration: none;
   color: black;
+  font-size: 1.8rem!important;
 }
 
 ul {
@@ -79,6 +80,9 @@ figure {
 .btn-red {
   background-color: #DF4244;
   border: 1px solid #DF4244;
+}
+input{
+  font-size: 1.8rem!important;
 }
 .btn-red:hover {
   color: rgba(255, 255, 255, 0.8980392157);

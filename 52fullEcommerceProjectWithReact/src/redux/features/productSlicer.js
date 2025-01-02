@@ -51,13 +51,28 @@ export const sortByCategory = createAsyncThunk("product/sortByCategory", async (
 export const deleteproduct = createAsyncThunk(
   'product/deleteproduct',
   async (id) => {
-    // id düzgün göndərilir
     await axios.delete(`http://localhost:3000/products/${id}`);
-    return id;  // ID-ni geri qaytarırıq ki, bunu reducer-da istifadə edək
+    return id; 
   }
 );
 
 
+
+export const addnewProduct= createAsyncThunk(
+  'product/addNewProduct',
+  async (newProduct) => {
+    const response = await axios.post(`${baseUrl}`,newProduct)
+   
+    return response.data
+  },
+)
+export const editProduct= createAsyncThunk(
+  'product/editProduct',
+  async (product) => {
+    const response = await axios.put(`${baseUrl}/${product.id}`,product)
+    return response.data
+  },
+)
 
 
 
@@ -99,9 +114,21 @@ const productSlice = createSlice({
 
       .addCase(deleteproduct.fulfilled, (state, action) => {
         state.products = state.products.filter(product => product.id !== action.payload);
-        state.filteredProducts = state.products;  // Filterlənmiş siyahını da yeniləmiş oluruq
+        state.filteredProducts = state.products; 
+      })
+
+      .addCase(addnewProduct.fulfilled, (state, action) => {
+      
+        state.products.push(action.payload)
+      })
+      .addCase(editProduct.fulfilled, (state, action) => {
+        const updatedProduct = action.payload;
+        state.products = state.products.map((product) => 
+          product.id === updatedProduct.id ? updatedProduct : product
+        );
       });
       
+      ;
       
 
 

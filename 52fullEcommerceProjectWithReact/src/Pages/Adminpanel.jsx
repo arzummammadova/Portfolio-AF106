@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getProducts } from '../redux/features/adminSlice';
-import { Button } from '@mui/material';
+import { Button, Input, InputAdornment, TextField } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
-import { deleteproduct } from '../redux/features/productSlicer';
+import { addnewProduct, deleteproduct, editProduct } from '../redux/features/productSlicer';
 import { toast, ToastContainer } from 'react-toastify';
 
 import Box from '@mui/material/Box';
@@ -19,6 +19,7 @@ import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material/styles';
 
 const ModalBox = styled(Box)({
+
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -29,35 +30,156 @@ const ModalBox = styled(Box)({
   boxShadow: 24,
   padding: '30px',
   borderRadius: '8px',
-  width:'40%'
+  width: '40%'
 });
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const Adminpanel = () => {
+
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [open, setOpen] = useState(false);
-
-  const handleOpen = (product) => {
-    setSelectedProduct(product);
-    setOpen(true);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("")
+  const [rating, setRating] = useState("")
+  const [count, setCount] = useState("")
+  const resetFields = () => {
+    setTitle("");
+    setDescription("");
+    setCategory("");
+    setPrice("");
+    setImage("");
+    setRating("");
+    setCount("");
   };
 
+  const handleOpen = (product) => {
+    resetFields()
+    setSelectedProduct(product);
+    // console.log(product)
+    setOpen(true);
+  };
+  const handleEditSave = () => {
+    if (!title || !description || !category || !price || !image || !rating || !count) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    const updatedProduct = {
+      ...selectedProduct,
+      title,
+      description,
+      category,
+      price: parseFloat(price),
+      image,
+      rating: {
+        rate: parseFloat(rating),
+        count: parseInt(count, 10),
+      },
+    };
+
+    dispatch(editProduct(updatedProduct));
+    setOpenEdit(false);
+    toast.success("Product updated successfully!");
+  };
+
+
+  const handleOpenEdit = (product) => {
+    setSelectedProduct(product);
+    setTitle(product.title);
+    setDescription(product.description);
+    setCategory(product.category);
+    setPrice(product.price);
+    setImage(product.image);
+    setRating(product.rating.rate);
+    setCount(product.rating.count);
+    setOpenEdit(true);
+  };
   const handleClose = () => {
     setOpen(false);
   };
 
+  const handleCloseEdit = () => setOpenEdit(false);
 
+  const createProduct = () => {
+    if (!title, !description, !category, !price, !rating === "", !image, !count === "") {
+      toast("tam doldur ")
+      return;
+    }
+    else {
+      const newProduct = {
+        title,
+        description,
+        category,
+        price: parseFloat(price),
+        rating: { rate: rating, count: count },
+        image,
+
+
+      };
+      setTitle(""),
+        setDescription("")
+      setCategory("")
+      setImage("")
+      setCategory("")
+      setPrice("")
+      setRating(0);
+      setCount(0);
+
+
+
+      dispatch(addnewProduct(newProduct))
+      toast.success('added new product!')
+
+
+    }
+
+  };
+
+  const updateProduct = () => {
+    if (!title || !description || !category || !price || !rating || !image || !count) {
+      toast("Please fill out all fields!");
+    } else {
+      const updatedProduct = {
+        ...selectedProduct,
+        title,
+        description,
+        category,
+        price: parseFloat(price),
+        rating: { rate: rating, count: count },
+        image,
+      };
+      dispatch(editProduct(updatedProduct));
+      toast.success("Product updated!");
+      handleCloseEdit();
+    }
+  };
 
   useEffect(() => {
     dispatch(getProducts());
-  }, [dispatch]);
+  }, [dispatch, products]);
 
   function deleteProduct(id) {
     dispatch(deleteproduct(id));
     toast.success("Mehsul silindi");
   }
+
 
   return (
     <div className="admin-container">
@@ -69,7 +191,70 @@ const Adminpanel = () => {
             <Button><p style={{ textAlign: "center", fontSize: "16px" }}>User</p></Button>
           </div>
 
-          <button className="add-btn">Create</button>
+          <button className="add-btn" onClick={() => handleOpen()}>Create</button>
+
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+
+            <Box sx={style} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+              <TextField
+                label="Title"
+                fullWidth
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+
+              <TextField
+                label="Description"
+                fullWidth
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <TextField
+                label="Category"
+                fullWidth
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <TextField
+                label="Image"
+                fullWidth
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+              <TextField
+                label="rating"
+                fullWidth
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <TextField
+                label="add count"
+                fullWidth
+                value={count}
+                onChange={(e) => setCount(e.target.value)}
+              />
+              <Input
+                fullWidth
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                placeholder="Price"
+              />
+
+              <Button
+                style={{ backgroundColor: "green", color: "white" }}
+                onClick={() => handleEditSave()}
+              >
+                Save
+              </Button>
+
+            </Box>
+          </Modal>
         </header>
 
         <section>
@@ -110,7 +295,11 @@ const Adminpanel = () => {
                           >
                           </Button>
 
-                          <Button style={{ color: "#2E5077", minWidth: "20px" }} startIcon={<EditIcon />} />
+                          <Button style={{ color: "#2E5077", minWidth: "20px" }} startIcon={<EditIcon />} onClick={() => handleOpenEdit(product)} />
+
+
+
+                      
 
                           <Button onClick={() => handleOpen(product)} style={{ color: '#47663B' }} startIcon={<InfoIcon />} />
 
@@ -127,20 +316,80 @@ const Adminpanel = () => {
         </section>
       </main>
       {
-        selectedProduct &&( <Modal open={open} onClose={handleClose}>
+        selectedProduct && (<Modal open={open} onClose={handleClose}>
           <ModalBox >
-            <h2 style={{color:"red"}}>Product Name: { selectedProduct.title} h</h2>
-            <img style={{width:"100px",height:"100px"}} src={selectedProduct.image} alt="" />
+            <h2 style={{ color: "red" }}>Product Name: {selectedProduct.title} h</h2>
+            <img style={{ width: "100px", height: "100px" }} src={selectedProduct.image} alt="" />
             <Typography variant="h6" component="h2">Product Price :${selectedProduct.price}</Typography>
-            <Typography style={{fontSize:"15px"}} sx={{ mt: 2 }}>Image link:{ selectedProduct.image}</Typography>
-            <Typography  style={{fontSize:"15px"}} sx={{ mt: 2 }}>Description:{ selectedProduct.description}</Typography>
-            <Typography  style={{fontSize:"15px"}} sx={{ mt: 2 }}>Count:{ selectedProduct.rating.count}</Typography>
-            <Typography  style={{fontSize:"15px"}} sx={{ mt: 2 }}>Rating:{ selectedProduct.rating.rate}<StarIcon style={{color:"yellow"}}/></Typography>
+            <Typography style={{ fontSize: "15px" }} sx={{ mt: 2 }}>Image link:{selectedProduct.image}</Typography>
+            <Typography style={{ fontSize: "15px" }} sx={{ mt: 2 }}>Description:{selectedProduct.description}</Typography>
+            <Typography style={{ fontSize: "15px" }} sx={{ mt: 2 }}>Count:{selectedProduct?.rating?.count}</Typography>
+            <Typography style={{ fontSize: "15px" }} sx={{ mt: 2 }}>Rating:{selectedProduct?.rating?.rate}<StarIcon style={{ color: "yellow" }} /></Typography>
           </ModalBox>
         </Modal>)
-     
+
       }
-  <ToastContainer />
+          <Modal open={openEdit} onClose={handleCloseEdit} aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description">
+
+
+                            <Box sx={style} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                              <TextField
+                                label="Title"
+                                fullWidth
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                              />
+
+                              <TextField
+                                label="Description"
+                                fullWidth
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                              />
+                              <TextField
+                                label="Category"
+                                fullWidth
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                              />
+                              <TextField
+                                label="Image"
+                                fullWidth
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
+                              />
+                              <TextField
+                                label="rating"
+                                fullWidth
+                                value={rating}
+                                onChange={(e) => setRating(e.target.value)}
+                              />
+                              <TextField
+                                label="add count"
+                                fullWidth
+                                value={count}
+                                onChange={(e) => setCount(e.target.value)}
+                              />
+                              <Input
+                                fullWidth
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                placeholder="Price"
+                              />
+
+                              <Button
+                                style={{ backgroundColor: "green", color: "white" }}
+                                onClick={() => handleEditSave()}
+                              >
+                                edit
+                              </Button>
+
+                            </Box>
+
+                          </Modal>
+      <ToastContainer />
 
     </div>
   );
