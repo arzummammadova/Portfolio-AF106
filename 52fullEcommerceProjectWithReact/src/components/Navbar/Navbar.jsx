@@ -12,6 +12,7 @@ import Select from '@mui/material/Select';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchProducts } from '../../redux/features/productSlicer';
+import { Badge, IconButton } from '@mui/material';
 
 const Navbar = () => {
     const [user, setUser] = useState(null);
@@ -19,6 +20,8 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.product.products);
     const filteredProducts = useSelector((state) => state.product.filteredProducts);
+    const basketItems = useSelector((state) => state.basket.value);
+    const totalItems = basketItems.reduce((total, item) => total + item.count, 0);
 
     // Hər input dəyişdikdə axtarışı yenilə
     const handleSearchChange = (e) => {
@@ -97,7 +100,7 @@ const Navbar = () => {
                                     )}
                                 </div>
                             ) : (
-                                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                <FormControl style={{ fontSize: "16px" }} sx={{ m: 1, minWidth: 120 }}>
                                     <InputLabel id="demo-simple-select-helper-label">Login/Register</InputLabel>
                                     <Select>
                                         <MenuItem value="">
@@ -121,10 +124,15 @@ const Navbar = () => {
                                 </FormControl>
                             )}
 
-                            <Link  to='/wishlist'><img src={heart} alt="wishlist" className="group basket" /></Link>
-                            <a href="basket.html"><img src={basket} alt="basket" className="group" />
-                                <div className="basket-count">1</div>
-                            </a>
+                            <Link to='/wishlist'><img src={heart} alt="wishlist" className="group basket" /></Link>
+                            <Link to='/basket'>
+                                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                                  
+                                    <Badge badgeContent={totalItems} color="error" style={{ fontSize: "16px" }}>
+                                        <img src={basket} alt="basket" className="group" />
+                                    </Badge>
+
+                                </IconButton></Link>
                         </div>
                         <div className="burger-menu">
                             <img src={burger} alt="burger menu" />
@@ -145,7 +153,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-          
+
         </div>
     );
 };

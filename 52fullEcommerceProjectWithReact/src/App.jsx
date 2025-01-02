@@ -10,6 +10,7 @@ import Adminpanel from './Pages/Adminpanel'
 import Shoulderbag from './Pages/Shoulderbag'
 import Details from './components/Details'
 import Wishlist from './Pages/Wishlist'
+import Basket from './Pages/Basket'
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const App = () => {
         {
           path:"/wishlist",
           element:<Wishlist/>
+        }
+        ,{
+          path:"/basket",
+          element:<Basket/>
         }
       ]
 

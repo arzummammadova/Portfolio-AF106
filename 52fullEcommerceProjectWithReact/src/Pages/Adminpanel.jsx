@@ -31,7 +31,12 @@ const Adminpanel = () => {
               </thead>
               <tbody>
                  <tr>
-                  <td>salam</td>
+                  <td>1</td>
+                  <td>imga</td>
+                  <td>category</td>
+                  <td>12$</td>
+                  <td>delete remove</td>
+                  <td>dlete remove</td>
                  </tr>
               </tbody>
             </table>

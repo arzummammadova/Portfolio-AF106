@@ -6,32 +6,35 @@ import starIcon from '../assets/icons/star.svg';
 import hearticon from '../assets/icons/hearticon.svg';
 import hearticonfill from '../assets/icons/hearticonfill.svg';
 import { useNavigate } from 'react-router-dom';
+import { addToBasket } from '../redux/features/basketSlice';
 
 const Productsslide = ({ selectedCategory }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Access products and wishlist state
   const products = useSelector((state) => state.product.products);
   const wishlist = useSelector((state) => state.wishlist.wishlist);
+  const basket = useSelector((state) => state.basket.basket)
 
   const [heart, setHeart] = useState({});
 
-  // Fetch products on component mount
   useEffect(() => {
     dispatch(setProducts());
   }, [dispatch]);
 
-  // Handle wishlist toggle
   const hearttoggle = (product) => {
-    dispatch(addAndRemoveToWishlist(product)); // Add or remove product from wishlist
+    dispatch(addAndRemoveToWishlist(product));
     setHeart((prev) => ({
       ...prev,
       [product.id]: !prev[product.id],
     }));
   };
 
-  // Filter products based on selected category
+  const addtobasket = (product) => {
+    dispatch(addToBasket(product));
+    alert("added")
+  }
+
   const filteredProducts = selectedCategory
     ? products.filter((product) => product.category === selectedCategory)
     : products;
@@ -43,7 +46,7 @@ const Productsslide = ({ selectedCategory }) => {
           key={product.id}
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/details/${product.id}`); // Navigate to product details
+            navigate(`/details/${product.id}`);
           }}
           className="featuredproducts_cards_card"
           style={{ width: '100%' }}
@@ -61,13 +64,19 @@ const Productsslide = ({ selectedCategory }) => {
           <p>{product.title}</p>
           <span className="price">${product.price}</span>
           <span className="prevprice">From $340.00</span>
-          <div className="btn-card">Add to cart</div>
+          <div className="btn-card" onClick={(e) => {
+            e.stopPropagation(); 
+            addtobasket(product); 
+          }}>
+            Add to cart
+          </div>
+
           <button className="btn-lt btn-green">NEW</button>
           <div
             className="heart"
             onClick={(e) => {
-              e.stopPropagation(); // Prevent navigation
-              hearttoggle(product); // Toggle wishlist
+              e.stopPropagation();
+              hearttoggle(product);
             }}
           >
             <img
