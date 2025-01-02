@@ -48,6 +48,19 @@ export const sortByCategory = createAsyncThunk("product/sortByCategory", async (
   return filtered; 
 });
 
+export const deleteproduct = createAsyncThunk(
+  'product/deleteproduct',
+  async (id) => {
+    // id düzgün göndərilir
+    await axios.delete(`http://localhost:3000/products/${id}`);
+    return id;  // ID-ni geri qaytarırıq ki, bunu reducer-da istifadə edək
+  }
+);
+
+
+
+
+
 
 
 const productSlice = createSlice({
@@ -82,7 +95,16 @@ const productSlice = createSlice({
       })
       .addCase(sortByCategory.fulfilled, (state, action) => {
         state.filteredProducts = action.payload; 
+      })
+
+      .addCase(deleteproduct.fulfilled, (state, action) => {
+        state.products = state.products.filter(product => product.id !== action.payload);
+        state.filteredProducts = state.products;  // Filterlənmiş siyahını da yeniləmiş oluruq
       });
+      
+      
+
+
 
          
      ;
