@@ -94,3 +94,13 @@ a{
   z-index: 4;
 
 }
+
+
+.sortbtn{
+  width: auto!important;
+  margin-left: 2px!important;
+}
+
+.sortcount{
+width: auto!important;
+}

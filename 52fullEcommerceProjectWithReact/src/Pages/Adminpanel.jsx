@@ -9,9 +9,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
-import { addnewProduct, deleteproduct, editProduct } from '../redux/features/productSlicer';
+import { addnewProduct, deleteproduct, editProduct, sortProductByZA } from '../redux/features/productSlicer';
 import { toast, ToastContainer } from 'react-toastify';
-
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -28,7 +27,7 @@ const ModalBox = styled(Box)({
   backgroundColor: '#fff',
   border: '2px solid #000',
   boxShadow: 24,
-  padding: '30px',
+  padding: '50px',
   borderRadius: '8px',
   width: '40%'
 });
@@ -59,6 +58,8 @@ const Adminpanel = () => {
   const [image, setImage] = useState("")
   const [rating, setRating] = useState("")
   const [count, setCount] = useState("")
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const resetFields = () => {
     setTitle("");
     setDescription("");
@@ -118,39 +119,26 @@ const Adminpanel = () => {
   const handleCloseEdit = () => setOpenEdit(false);
 
   const createProduct = () => {
-    if (!title, !description, !category, !price, !rating === "", !image, !count === "") {
-      toast("tam doldur ")
+    if (!title || !description || !category || !price || !image || !rating || !count) {
+      toast.error("Please fill out all fields!");
       return;
     }
-    else {
-      const newProduct = {
-        title,
-        description,
-        category,
-        price: parseFloat(price),
-        rating: { rate: rating, count: count },
-        image,
-
-
-      };
-      setTitle(""),
-        setDescription("")
-      setCategory("")
-      setImage("")
-      setCategory("")
-      setPrice("")
-      setRating(0);
-      setCount(0);
-
-
-
-      dispatch(addnewProduct(newProduct))
-      toast.success('added new product!')
-
-
-    }
-
+  
+    const newProduct = {
+      title,
+      description,
+      category,
+      price: parseFloat(price),
+      rating: { rate: parseFloat(rating), count: parseInt(count, 10) },
+      image,
+    };
+  
+    dispatch(addnewProduct(newProduct));
+    toast.success("Added new product!");
+    resetFields(); 
+    setOpen(false); 
   };
+  
 
   const updateProduct = () => {
     if (!title || !description || !category || !price || !rating || !image || !count) {
@@ -181,6 +169,47 @@ const Adminpanel = () => {
   }
 
 
+
+  const sortProductAZ = () => {
+    const sorted = [...products].sort((a, b) => a.title.localeCompare(b.title));
+    setFilteredProducts(sorted);
+    toast.success("Products sorted A-Z!");
+  };
+
+  const sortProductZA = () => {
+    const sorted = [...products].sort((a, b) => b.title.localeCompare(a.title))
+    setFilteredProducts(sorted)
+    // dispatch(sortProductByZA());
+    toast.success("Product sorted Z-a")
+  }
+  const lowToHigh=()=>{
+     const sorted=[...products].sort((a,b)=>a.price-b.price)
+     setFilteredProducts(sorted);
+     toast.success("Sorted by Low to High")
+  }
+  const highToLow=()=>{
+    const sorted=[...products].sort((a,b)=>b.price-a.price)
+    setFilteredProducts(sorted);
+    toast.success("Sorted by Low to High")
+ }
+ const ratingLessPopular=()=>{
+  const sorted=[...products].sort((a,b)=>a.rating.rate-b.rating.rate)
+  setFilteredProducts(sorted)
+  toast.success("Sorted by Rating")
+}
+
+const ratingPopular=()=>{
+  const sorted=[...products].sort((a,b)=>b.rating.rate-a.rating.rate)
+  setFilteredProducts(sorted)
+  toast.success("Sorted by Rating Popular")
+}
+const countLowToHigh=()=>{
+  const sorted=[...products].sort((a,b)=>a.rating.count-b.rating.count)
+  setFilteredProducts(sorted)
+  toast.success("Sorted by Count (l-h)")
+}
+
+
   return (
     <div className="admin-container">
       <main className="content">
@@ -192,7 +221,14 @@ const Adminpanel = () => {
           </div>
 
           <button className="add-btn" onClick={() => handleOpen()}>Create</button>
-
+          <button className="add-btn sortbtn" onClick={() => sortProductAZ()} >Sort by AZ</button>
+          <button className="add-btn sortbtn" onClick={() => sortProductZA()} >Sort by ZA</button>
+          <button className="add-btn sortbtn" onClick={() => lowToHigh()} >Sort by Low to High</button>
+          <button className="add-btn sortbtn" onClick={() => highToLow()} >Sort by High to Low</button>
+          <button className="add-btn sortbtn" onClick={() => ratingLessPopular()} >Rating Less Popular</button>
+          <button className="add-btn sortbtn" onClick={() => ratingPopular()} >Rating Most Popular</button>
+          <button className="add-btn sortbtn" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
+          <button className="add-btn sortcount" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
           <Modal
             open={open}
             onClose={handleClose}
@@ -248,7 +284,8 @@ const Adminpanel = () => {
 
               <Button
                 style={{ backgroundColor: "green", color: "white" }}
-                onClick={() => handleEditSave()}
+                onClick={() =>   createProduct()}
+              
               >
                 Save
               </Button>
@@ -274,7 +311,8 @@ const Adminpanel = () => {
               </thead>
               <tbody>
                 {
-                  products.map((product) => (
+                  (filteredProducts.length > 0 ? filteredProducts : products).map((product) => (
+
                     <tr key={product.id}>
                       <td>{product.id}</td>
                       <td><img style={{ width: "100px", height: "100px" }} src={product.image} alt="" /></td>
@@ -299,7 +337,7 @@ const Adminpanel = () => {
 
 
 
-                      
+
 
                           <Button onClick={() => handleOpen(product)} style={{ color: '#47663B' }} startIcon={<InfoIcon />} />
 
@@ -329,66 +367,66 @@ const Adminpanel = () => {
         </Modal>)
 
       }
-          <Modal open={openEdit} onClose={handleCloseEdit} aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description">
+      <Modal open={openEdit} onClose={handleCloseEdit} aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
 
 
-                            <Box sx={style} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                              <TextField
-                                label="Title"
-                                fullWidth
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                              />
+        <Box sx={style} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <TextField
+            label="Title"
+            fullWidth
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
 
-                              <TextField
-                                label="Description"
-                                fullWidth
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                              />
-                              <TextField
-                                label="Category"
-                                fullWidth
-                                value={category}
-                                onChange={(e) => setCategory(e.target.value)}
-                              />
-                              <TextField
-                                label="Image"
-                                fullWidth
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
-                              />
-                              <TextField
-                                label="rating"
-                                fullWidth
-                                value={rating}
-                                onChange={(e) => setRating(e.target.value)}
-                              />
-                              <TextField
-                                label="add count"
-                                fullWidth
-                                value={count}
-                                onChange={(e) => setCount(e.target.value)}
-                              />
-                              <Input
-                                fullWidth
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                                placeholder="Price"
-                              />
+          <TextField
+            label="Description"
+            fullWidth
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <TextField
+            label="Category"
+            fullWidth
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <TextField
+            label="Image"
+            fullWidth
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+          <TextField
+            label="rating"
+            fullWidth
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          />
+          <TextField
+            label="add count"
+            fullWidth
+            value={count}
+            onChange={(e) => setCount(e.target.value)}
+          />
+          <Input
+            fullWidth
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            placeholder="Price"
+          />
 
-                              <Button
-                                style={{ backgroundColor: "green", color: "white" }}
-                                onClick={() => handleEditSave()}
-                              >
-                                edit
-                              </Button>
+          <Button
+            style={{ backgroundColor: "green", color: "white" }}
+            onClick={() => handleEditSave()}
+          >
+            edit
+          </Button>
 
-                            </Box>
+        </Box>
 
-                          </Modal>
+      </Modal>
       <ToastContainer />
 
     </div>

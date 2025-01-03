@@ -13,10 +13,14 @@ export const setProducts = createAsyncThunk("product/getProducts", async () => {
   return response.data;
 });
 
+
+
+
 export const sortProductByAZ = createAsyncThunk("product/sortByAZ", async () => {
-  const response = await axios.get(baseUrl);
-  return response.data.slice().sort((a, b) => a.title.localeCompare(b.title));
+    const response = await axios.get(baseUrl);
+      return response.data.slice().sort((a, b) => a.title.localeCompare(b.title));
 });
+
 
 export const sortProductByZA = createAsyncThunk("product/sortByZA", async () => {
   const response = await axios.get(baseUrl);
@@ -92,6 +96,10 @@ const productSlice = createSlice({
         state.products = action.payload;
         state.filteredProducts = action.payload;
       })
+      // .addCase(sortProductByAZ.fulfilled, (state, action) => {
+      //   state.filteredProducts = action.payload; // Bu nəticəni saxlayır
+      // })
+      
       .addCase(sortProductByZA.fulfilled, (state, action) => {
         state.products = action.payload;
         state.filteredProducts = action.payload;
@@ -114,18 +122,21 @@ const productSlice = createSlice({
 
       .addCase(deleteproduct.fulfilled, (state, action) => {
         state.products = state.products.filter(product => product.id !== action.payload);
-        state.filteredProducts = state.products; 
+        state.filteredProducts = state.filteredProducts.filter(product => product.id !== action.payload);
       })
+      
 
       .addCase(addnewProduct.fulfilled, (state, action) => {
       
         state.products.push(action.payload)
+        state.filteredProducts.pus(action.payload)
       })
       .addCase(editProduct.fulfilled, (state, action) => {
         const updatedProduct = action.payload;
         state.products = state.products.map((product) => 
           product.id === updatedProduct.id ? updatedProduct : product
         );
+
       });
       
       ;
