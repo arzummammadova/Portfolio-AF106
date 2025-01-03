@@ -217,7 +217,7 @@ const Adminpanel = () => {
     setFilteredProducts(filtered);
     if (filtered.length === 0) {
       setFilteredProducts([]);
-      // Optionally set a "no products" message (you can use another state for this)
+  
       toast.error("Product not found")
     }
   };
