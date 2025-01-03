@@ -11,6 +11,7 @@ import Shoulderbag from './Pages/Shoulderbag'
 import Details from './components/Details'
 import Wishlist from './Pages/Wishlist'
 import Basket from './Pages/Basket'
+import Users from './Pages/Users'
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const App = () => {
         ,{
           path:"/basket",
           element:<Basket/>
+        },
+        {
+          path:"/users",
+          element:<Users/>
         }
       ]
 

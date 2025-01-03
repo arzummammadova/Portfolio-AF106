@@ -36,6 +36,9 @@ const Register = () => {
       password: '',
       confirmPassword: '',
       gender: '',
+      firstName:'',
+      lastName:'',
+      data:new Date(),
     },
     validationSchema: register,
     onSubmit: (values, action) => {
@@ -48,6 +51,30 @@ const Register = () => {
       <div className="form-container">
         <h3 className="form-title">Register</h3>
         <form className="form" onSubmit={handleSubmit}>
+        <div>
+            <label className="label">FirstName</label>
+            <input
+              type="text"
+              name="firstName"
+              className="input"
+              placeholder="Enter your username"
+              value={values.firstName}
+              onChange={handleChange}
+            />
+            {errors.firstName && <span className="error">{errors.firstName}</span>}
+          </div>
+          <div>
+            <label className="label">LastName</label>
+            <input
+              type="text"
+              name="lastName"
+              className="input"
+              placeholder="Enter your username"
+              value={values.lastName}
+              onChange={handleChange}
+            />
+            {errors.lastName && <span className="error">{errors.lastName}</span>}
+          </div>
           <div>
             <label className="label">Username</label>
             <input

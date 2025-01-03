@@ -234,7 +234,7 @@ const Adminpanel = () => {
           <h1 className="text-center">List of Products</h1>
           <div className="pages" style={{ textAlign: "center" }}>
             <Link to='/adminpanel'><p style={{ textAlign: "center", fontSize: "16px" }}>Product</p></Link>
-            <Button><p style={{ textAlign: "center", fontSize: "16px" }}>User</p></Button>
+            <Button><Link to='/users' style={{ textAlign: "center", fontSize: "16px" }}>User</Link></Button>
           </div>
 
           <div className="buttonsaction" style={{ margin: "0 auto", maxWidth: "78%" }}>

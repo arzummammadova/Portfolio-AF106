@@ -109,3 +109,11 @@ width: auto!important;
   padding: 10px;
   border: none;
 }
+
+.userstable th{
+  padding: 2px!important;
+}
+
+.userstable td{
+  padding: 4px!important;
+}

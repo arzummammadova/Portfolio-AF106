@@ -1,6 +1,16 @@
 import * as yup from 'yup';
 
 export const register = yup.object().shape({
+  firstName: yup
+    .string()
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+    .max(40)
+    .required(),
+  lastName: yup
+    .string()
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+    .max(40)
+    .required(),
   username: yup.string()
     .min(2, 'Username is too short!')
     .max(50, 'Username is too long!')
