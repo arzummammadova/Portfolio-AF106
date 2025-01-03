@@ -2,14 +2,15 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { setProducts } from '../../redux/features/productSlicer'; // `fetchProducts` əvəzinə `setProducts`
+import { setProducts } from '../../redux/features/productSlicer';
 import Productsslide from '../Productsslide';
+import { Link } from 'react-router-dom';
 const FeaturedProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    dispatch(setProducts()); // `fetchProducts` əvəzinə `setProducts` istifadə edin
+    dispatch(setProducts()); 
   }, [dispatch]);
 
   return (
@@ -20,7 +21,7 @@ const FeaturedProducts = () => {
             <div className="featuredproducts_title">
               <h2>Featured Products</h2>
               <div className="featuredproducts_title_right">
-                <a href="shoulderbag.html">View all products</a>
+                <Link to="/shoulderbag">View all products</Link>
                 {/* <div className="right-arroww">
                   <img src={rightarrow} alt="Right Arrow" />
                 </div> */}
@@ -33,7 +34,7 @@ const FeaturedProducts = () => {
               <div className="right-arrow">
                 <img src={rightarrow} alt="Right Arrow" />
               </div> */}
-              <Productsslide /> {/* Burada komponenti istifadə etdiniz */}
+              <Productsslide /> 
             </div>
           </div>
         </div>

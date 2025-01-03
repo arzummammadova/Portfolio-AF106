@@ -3,15 +3,17 @@ import './Register.css';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { register } from '../../../schema/RegisterSchema';
-
+import { toast, ToastContainer } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 const Register = () => {
+  const navigate=useNavigate()
   const sendData = async (values, action) => {
     try {
       const response = await axios.get('http://localhost:3000/users');
       const findUser = response.data.find((user) => user.email === values.email);
 
       if (findUser) {
-        alert('This email is already registered.');
+        toast.error('This email is already registered.');
         action.resetForm();
       } else {
         const newUser = {
@@ -21,8 +23,15 @@ const Register = () => {
         };
 
         await axios.post('http://localhost:3000/users', newUser);
-        alert('Registration successful!');
+        toast.success('Registration successful!');
+
+        setTimeout(() => {
+
+          navigate("/");
+          
+        }, 2000);
         action.resetForm();
+
       }
     } catch (error) {
       console.error('Error registering user:', error);
@@ -48,8 +57,8 @@ const Register = () => {
 
   return (
     <div className="flex-container">
-      <div className="form-container">
-        <h3 className="form-title">Register</h3>
+      <div className="form-container" style={{height:"700px"}}>
+        <h3 className="form-title" style={{marginTop:"30px"}}>Register</h3>
         <form className="form" onSubmit={handleSubmit}>
         <div>
             <label className="label">FirstName</label>
@@ -159,7 +168,11 @@ const Register = () => {
           <button type="submit" className="submit-button">
             Register
           </button>
+
+          <p>All ready have an account? <Link to='/login'>Sign In</Link></p>
         </form>
+
+      <ToastContainer/>
       </div>
     </div>
   );

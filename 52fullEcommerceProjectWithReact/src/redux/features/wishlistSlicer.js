@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ToastContainer } from "react-toastify";
 
 const initialState = {
     wishlist: [],
@@ -12,6 +13,7 @@ export const wishlistSlice = createSlice({
             const existingProduct = state.wishlist.find((product) => product.id === action.payload.id);
             if(!existingProduct) {
                 state.wishlist.push(action.payload);
+                
             }else{
                 state.wishlist = state.wishlist.filter((product) => product.id !== action.payload.id);
             }
@@ -32,6 +34,7 @@ export const wishlistSlice = createSlice({
 
 
     }
+    // <ToastContainer/>
 })
 
 export const { addAndRemoveToWishlist,removeallWishlist,deleteproductWishlist } = wishlistSlice.actions;

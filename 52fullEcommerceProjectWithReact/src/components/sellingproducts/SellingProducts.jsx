@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import rightarrow from '../../assets/icons/rightarrow.svg';
 import leftarrow from '../../assets/icons/leftarrow.svg';
-import { setProducts } from '../../redux/features/productSlicer'; // setProducts istifadə edin
 import Productsslide from '../Productsslide';
+import { setProducts } from '../../redux/features/productSlicer';
+import { Link } from 'react-router-dom';
 
 const SellingProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    dispatch(setProducts()); // setProducts istifadə edirik
+    dispatch(setProducts()); 
   }, [dispatch]);
 
   return (
@@ -21,7 +22,7 @@ const SellingProducts = () => {
             <div className="featuredproducts_title">
               <h2>Best Seller</h2>
               <div className="featuredproducts_title_right">
-                <a href="shoulderbag.html">View all products</a>
+                <Link to="/shoulderbag">View all products</Link>
                 <div className="right-arroww">
                   <img src={rightarrow} alt="Right Arrow" />
                 </div>

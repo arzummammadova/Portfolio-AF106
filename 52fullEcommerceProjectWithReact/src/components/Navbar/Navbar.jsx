@@ -133,9 +133,9 @@ const Navbar = () => {
 
                                 </IconButton></Link>
                         </div>
-                        <div className="burger-menu">
+                        {/* <div className="burger-menu">
                             <img src={burger} alt="burger menu" />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="nav-bottom">
                         <div className="nav_menu">

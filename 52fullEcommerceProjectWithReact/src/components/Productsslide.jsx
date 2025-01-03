@@ -7,6 +7,7 @@ import hearticon from '../assets/icons/hearticon.svg';
 import hearticonfill from '../assets/icons/hearticonfill.svg';
 import { useNavigate } from 'react-router-dom';
 import { addToBasket } from '../redux/features/basketSlice';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Productsslide = ({ selectedCategory }) => {
   const dispatch = useDispatch();
@@ -22,17 +23,25 @@ const Productsslide = ({ selectedCategory }) => {
     dispatch(setProducts());
   }, [dispatch]);
 
-  const hearttoggle = (product) => {
+ const hearttoggle = (product) => {
     dispatch(addAndRemoveToWishlist(product));
     setHeart((prev) => ({
       ...prev,
       [product.id]: !prev[product.id],
     }));
+
+    const existingProduct = wishlist.find((item) => item.id === product.id);
+
+    if (!existingProduct) {
+      toast.success(` added to wishlist!`);  
+    } else {
+      toast.info(`removed from wishlist!`);  
+    }
   };
 
   const addtobasket = (product) => {
     dispatch(addToBasket(product));
-    alert("added")
+    toast.success("added to the basket")
   }
 
   const filteredProducts = selectedCategory
@@ -84,7 +93,9 @@ const Productsslide = ({ selectedCategory }) => {
               alt="Heart Icon"
             />
           </div>
+          <ToastContainer/>
         </div>
+
       ))}
     </>
   );

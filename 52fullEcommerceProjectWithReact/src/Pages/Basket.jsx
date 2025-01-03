@@ -1,14 +1,13 @@
 import React from 'react';
 import transportIcon from '../assets/icons/transport 1.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromBasket, updateQuantity } from '../redux/features/basketSlice'; // Import the new actions
+import { removeFromBasket, updateQuantity } from '../redux/features/basketSlice'; 
 
 const Basket = () => {
   const dispatch = useDispatch();
-  const basketItems = useSelector((state) => state.basket.value); // Accessing basket items from Redux
+  const basketItems = useSelector((state) => state.basket.value); 
 
   const addToFavorites = (product) => {
-    // Handle adding product to favorites logic
     console.log('Added to favorites:', product);
   };
 
@@ -59,9 +58,9 @@ const Basket = () => {
                       </div>
 
                       <div className="movement">
-                        <div className="addfavorite" onClick={() => addToFavorites(product)}>
+                        {/* <div className="addfavorite" onClick={() => addToFavorites(product)}>
                           <i className="bi bi-heart"></i> Favorite
-                        </div>
+                        </div> */}
                         <div className="remove" onClick={() => handleRemove(product.id)}>
                           <i className="bi bi-trash"></i> Remove
                         </div>

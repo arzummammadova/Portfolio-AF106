@@ -1,14 +1,13 @@
 import React from 'react';
 import './Login.css';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../../schema/LoginSchema';
 import axios from 'axios';
-
+import { toast, ToastContainer } from 'react-toastify';
 const Login = () => {
     const navigate = useNavigate();
 
-    // Formik hookunun istifadəsi
     const { handleChange, resetForm, errors, values, handleSubmit } = useFormik({
         initialValues: {
             email: '',
@@ -21,27 +20,29 @@ const Login = () => {
         validationSchema: login,
     });
 
-    // Login funksiyası
     const loginData = async (values, action) => {
         console.log("Attempting login...");
 
-        // Serverdən istifadəçiləri alırıq
         const response = await axios("http://localhost:3000/users");
         const existUser = response.data.find(
             (user) => user.email === values.email && user.password === values.password
         );
 
         if (existUser) {
-            // İstifadəçi tapıldısa, onun məlumatını yeniləyirik
+           
             const updateUser = {
                 ...existUser,
-                isLogin: true, // İstifadəçi daxil olduqda `isLogin` dəyəri true olacaq
+                isLogin: true,
             };
 
             await axios.patch(`http://localhost:3000/users/${existUser.id}`, updateUser);
-            navigate("/"); // Baş səhifəyə yönləndiririk
+            toast.success("registration successfully")
+            setTimeout(() => {
+                navigate("/"); 
+            }, 2000);
+           
         } else {
-            alert("Incorrect email or password.");
+            toast.error("Incorrect email or password.");
         }
     };
 
@@ -80,11 +81,12 @@ const Login = () => {
                         </div>
                         <button type="submit" className="submit-button">Login</button>
                         <div className="tabs">
-                            <a href="#" id="not-account" className="tab-link">Not an account?</a>
+                            <Link to="/register">Not an account?</Link>
                         </div>
                     </form>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 };

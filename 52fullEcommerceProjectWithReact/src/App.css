@@ -118,3 +118,28 @@ width: auto!important;
   font-size: 13px;
   padding: 4px!important;
 }
+.main-img:hover{
+   transform: scale(1.1);
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;  /* Transition for smooth changes */
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;  /* Ensures the shadow is contained within the image */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;  /* Smooth transition for box-shadow and transform */
+}
+
+.image-container.change-image {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Initial shadow effect */
+}
+
+.image-container.change-image:hover img {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Shadow effect on hover */
+  transform: scale(1.05) rotate(5deg); /* Zoom and slight rotation */
+}

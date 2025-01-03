@@ -10,7 +10,7 @@
       "firstName": "admin",
       "lastName": "Mammadova",
       "data": "2025-01-03T12:40:58.688Z",
-      "isLogin": true,
+      "isLogin": false,
       "isAdmin": true
     },
     {
@@ -49,6 +49,32 @@
       "firstName": "noname",
       "lastName": "noname",
       "data": "2025-01-03T13:32:31.544Z",
+      "isLogin": false,
+      "isAdmin": false
+    },
+    {
+      "id": "ae3c",
+      "username": "Arzum",
+      "email": "aminmamadov@gmail.com",
+      "password": "Secure2024",
+      "confirmPassword": "Secure2024",
+      "gender": "male",
+      "firstName": "Arzu",
+      "lastName": "Mammadova",
+      "data": "2025-01-03T19:18:23.994Z",
+      "isLogin": false,
+      "isAdmin": false
+    },
+    {
+      "id": "4cfd",
+      "username": "adsiz123",
+      "email": "adsiz@gmail.com",
+      "password": "Secure2024",
+      "confirmPassword": "Secure2024",
+      "gender": "female",
+      "firstName": "Adsiz",
+      "lastName": "Adyoxdu",
+      "data": "2025-01-03T19:22:10.508Z",
       "isLogin": false,
       "isAdmin": false
     }
