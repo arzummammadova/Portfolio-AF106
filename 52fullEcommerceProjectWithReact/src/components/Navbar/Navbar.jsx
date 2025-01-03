@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchProducts } from '../../redux/features/productSlicer';
 import { Badge, IconButton } from '@mui/material';
-
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 const Navbar = () => {
     const [user, setUser] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -97,6 +97,9 @@ const Navbar = () => {
                                             </FormControl>
                                         </div>
                                     )}
+
+
+                                   
                                 </div>
                             ) : (
                                 <FormControl style={{ fontSize: "16px" }} sx={{ m: 1, minWidth: 120 }}>
@@ -105,6 +108,7 @@ const Navbar = () => {
                                         <MenuItem value="">
                                             <em>Login/Register</em>
                                         </MenuItem>
+                                        
                                         <MenuItem>
                                             <Link to="/login">
                                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -119,10 +123,12 @@ const Navbar = () => {
                                                 </div>
                                             </Link>
                                         </MenuItem>
+
                                     </Select>
                                 </FormControl>
+                                
                             )}
-
+                            
                             <Link to='/wishlist'><img src={heart} alt="wishlist" className="group basket" /></Link>
                             <Link to='/basket'>
                                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">

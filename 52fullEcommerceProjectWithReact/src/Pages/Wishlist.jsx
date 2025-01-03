@@ -2,15 +2,22 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import star from '../assets/icons/star.svg';
 import { deleteproductWishlist, removeallWishlist } from '../redux/features/wishlistSlicer';
+import { addToBasket } from '../redux/features/basketSlice';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Wishlist = () => {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const handleRemove = (product) => {
-    dispatch( removeallWishlist(product)); 
+    dispatch(removeallWishlist(product));
   };
-  const deletefromWish=(product)=>{
+  const deletefromWish = (product) => {
     dispatch(deleteproductWishlist(product))
+  }
+
+  const addtobasket = (product) => {
+    dispatch(addToBasket(product));
+    toast.success("added to the basket")
   }
 
   return (
@@ -44,10 +51,13 @@ const Wishlist = () => {
                       <p>{product.title}</p>
                       <span className="price">${product.price}</span>
                       <span className="prevprice">From ${product.prevPrice}</span>
-
-                      <div className="btn-card">
+                      <div className="btn-card" onClick={(e) => {
+                        e.stopPropagation();
+                        addtobasket(product);
+                      }}>
                         Add to cart
                       </div>
+
 
                       <div className="heart close" onClick={() => deletefromWish(product)}>
                         X
@@ -61,10 +71,11 @@ const Wishlist = () => {
             </div>
           </div>
 
-          <button className="clear-all-button" onClick={() => dispatch( removeallWishlist())}>
+          <button className="clear-all-button" onClick={() => dispatch(removeallWishlist())}>
             Clear all
           </button>
         </div>
+        <ToastContainer/>
       </section>
     </div>
   );

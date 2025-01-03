@@ -133,7 +133,7 @@ const handleUpdateQuantity = (productId, amount) => {
             </div>
 
             <div className="right-side">
-              
+            
               <div className="product-titlee">{product?.title}</div>
               <div className="product-price">${product?.price}</div>
               {basketItems.map((product) => (
@@ -142,12 +142,14 @@ const handleUpdateQuantity = (productId, amount) => {
                         <button className="decrement" onClick={() => handleUpdateQuantity(product.id, -1)}>-</button>
                         <button className="increment" onClick={() => handleUpdateQuantity(product.id, 1)}>+</button>
                       </div>))}
+                      
               <div className="add-to-cart-btn" onClick={(e) => {
                 e.stopPropagation();
                 addToBasketHandler(product);
               }}>
                 Add to cart
               </div>
+            
             </div>
           </div>
 

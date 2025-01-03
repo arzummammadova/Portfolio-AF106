@@ -1,26 +1,39 @@
 import React from 'react';
 import transportIcon from '../assets/icons/transport 1.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromBasket, updateQuantity } from '../redux/features/basketSlice'; 
-
+import { removeFromBasket, updateQuantity, removeAllBasket } from '../redux/features/basketSlice'; 
+import { toast, ToastContainer } from 'react-toastify';
 const Basket = () => {
   const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.value); 
-
-  const addToFavorites = (product) => {
-    console.log('Added to favorites:', product);
-  };
 
   const handleRemove = (productId) => {
     dispatch(removeFromBasket({ id: productId }));
   };
 
   const handleUpdateQuantity = (productId, amount) => {
-    dispatch(updateQuantity({ id: productId, amount }));
+    const product = basketItems.find((item) => item.id === productId);
+    if (product) {
+      const newCount = product.count + amount;
+      if (newCount < 1) {
+        dispatch(removeFromBasket({ id: productId }));
+      } else {
+        dispatch(updateQuantity({ id: productId, amount }));
+      }
+    }
   };
+  
 
   const handleRemoveAll = () => {
     dispatch(removeAllBasket());
+  };
+
+  const handlePayment = () => {
+    if (basketItems.length === 0) {
+     toast.warning("Your basket is empty. Please add some products!");
+    } else {
+      console.log("Products to be purchased:", basketItems);
+    }
   };
 
   return (
@@ -48,19 +61,16 @@ const Basket = () => {
                     <div className="desc">
                       <div className="desc-header">
                         <h4>{product.title || 'No Title'}</h4>
-                        <p>USD ${product.price || 0}</p>
+                        <p>USD ${product.price.toFixed(2)}</p>
                       </div>
 
                       <div className="quantity">
-                        <p>Quantity: {product.count || 1}</p>
+                        <p>Quantity: {product.count}</p>
                         <button className="decrement" onClick={() => handleUpdateQuantity(product.id, -1)}>-</button>
                         <button className="increment" onClick={() => handleUpdateQuantity(product.id, 1)}>+</button>
                       </div>
 
                       <div className="movement">
-                        {/* <div className="addfavorite" onClick={() => addToFavorites(product)}>
-                          <i className="bi bi-heart"></i> Favorite
-                        </div> */}
                         <div className="remove" onClick={() => handleRemove(product.id)}>
                           <i className="bi bi-trash"></i> Remove
                         </div>
@@ -75,9 +85,11 @@ const Basket = () => {
               <div className="card">
                 <div className="your-subtotal">
                   <h4>Total</h4>
-                  <p id="total-price">${basketItems.reduce((total, product) => total + product.price * product.count, 0)}</p>
+                  <p id="total-price">
+                    ${basketItems.reduce((total, product) => total + product.price * product.count, 0).toFixed(2)}
+                  </p>
                 </div>
-                <button className="make">Make Payment</button>
+                <button className="make" onClick={handlePayment}>Make Payment</button>
               </div>
             </div>
           </div>
@@ -103,6 +115,7 @@ const Basket = () => {
             </div>
           ))}
         </section>
+        <ToastContainer/>
       </div>
     </div>
   );
