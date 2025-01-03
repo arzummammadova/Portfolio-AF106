@@ -59,6 +59,7 @@ const Adminpanel = () => {
   const [rating, setRating] = useState("")
   const [count, setCount] = useState("")
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const resetFields = () => {
     setTitle("");
@@ -69,6 +70,7 @@ const Adminpanel = () => {
     setRating("");
     setCount("");
   };
+
 
   const handleOpen = (product) => {
     resetFields()
@@ -123,7 +125,7 @@ const Adminpanel = () => {
       toast.error("Please fill out all fields!");
       return;
     }
-  
+
     const newProduct = {
       title,
       description,
@@ -132,13 +134,13 @@ const Adminpanel = () => {
       rating: { rate: parseFloat(rating), count: parseInt(count, 10) },
       image,
     };
-  
+
     dispatch(addnewProduct(newProduct));
     toast.success("Added new product!");
-    resetFields(); 
-    setOpen(false); 
+    resetFields();
+    setOpen(false);
   };
-  
+
 
   const updateProduct = () => {
     if (!title || !description || !category || !price || !rating || !image || !count) {
@@ -159,9 +161,7 @@ const Adminpanel = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch, products]);
+
 
   function deleteProduct(id) {
     dispatch(deleteproduct(id));
@@ -182,32 +182,49 @@ const Adminpanel = () => {
     // dispatch(sortProductByZA());
     toast.success("Product sorted Z-a")
   }
-  const lowToHigh=()=>{
-     const sorted=[...products].sort((a,b)=>a.price-b.price)
-     setFilteredProducts(sorted);
-     toast.success("Sorted by Low to High")
-  }
-  const highToLow=()=>{
-    const sorted=[...products].sort((a,b)=>b.price-a.price)
+  const lowToHigh = () => {
+    const sorted = [...products].sort((a, b) => a.price - b.price)
     setFilteredProducts(sorted);
     toast.success("Sorted by Low to High")
- }
- const ratingLessPopular=()=>{
-  const sorted=[...products].sort((a,b)=>a.rating.rate-b.rating.rate)
-  setFilteredProducts(sorted)
-  toast.success("Sorted by Rating")
-}
+  }
+  const highToLow = () => {
+    const sorted = [...products].sort((a, b) => b.price - a.price)
+    setFilteredProducts(sorted);
+    toast.success("Sorted by Low to High")
+  }
+  const ratingLessPopular = () => {
+    const sorted = [...products].sort((a, b) => a.rating.rate - b.rating.rate)
+    setFilteredProducts(sorted)
+    toast.success("Sorted by Rating")
+  }
 
-const ratingPopular=()=>{
-  const sorted=[...products].sort((a,b)=>b.rating.rate-a.rating.rate)
-  setFilteredProducts(sorted)
-  toast.success("Sorted by Rating Popular")
-}
-const countLowToHigh=()=>{
-  const sorted=[...products].sort((a,b)=>a.rating.count-b.rating.count)
-  setFilteredProducts(sorted)
-  toast.success("Sorted by Count (l-h)")
-}
+  const ratingPopular = () => {
+    const sorted = [...products].sort((a, b) => b.rating.rate - a.rating.rate)
+    setFilteredProducts(sorted)
+    toast.success("Sorted by Rating Popular")
+  }
+  const countLowToHigh = () => {
+    const sorted = [...products].sort((a, b) => a.rating.count - b.rating.count)
+    setFilteredProducts(sorted)
+    toast.success("Sorted by Count (l-h)")
+  }
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    const filtered = [...products].filter((product) =>
+      product.title.toLowerCase().includes(term.toLowerCase()))
+
+    setFilteredProducts(filtered);
+    if (filtered.length === 0) {
+      setFilteredProducts([]);
+      // Optionally set a "no products" message (you can use another state for this)
+      toast.error("Product not found")
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch, products]);
 
 
   return (
@@ -220,15 +237,19 @@ const countLowToHigh=()=>{
             <Button><p style={{ textAlign: "center", fontSize: "16px" }}>User</p></Button>
           </div>
 
-          <button className="add-btn" onClick={() => handleOpen()}>Create</button>
-          <button className="add-btn sortbtn" onClick={() => sortProductAZ()} >Sort by AZ</button>
-          <button className="add-btn sortbtn" onClick={() => sortProductZA()} >Sort by ZA</button>
-          <button className="add-btn sortbtn" onClick={() => lowToHigh()} >Sort by Low to High</button>
-          <button className="add-btn sortbtn" onClick={() => highToLow()} >Sort by High to Low</button>
-          <button className="add-btn sortbtn" onClick={() => ratingLessPopular()} >Rating Less Popular</button>
-          <button className="add-btn sortbtn" onClick={() => ratingPopular()} >Rating Most Popular</button>
-          <button className="add-btn sortbtn" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
-          <button className="add-btn sortcount" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
+          <div className="buttonsaction" style={{ margin: "0 auto", maxWidth: "78%" }}>
+            <button className="add-btn sortbtn" onClick={() => handleOpen()}>Create</button>
+            <button className="add-btn sortbtn" onClick={() => sortProductAZ()} >Sort by AZ</button>
+            <button className="add-btn sortbtn" onClick={() => sortProductZA()} >Sort by ZA</button>
+            <button className="add-btn sortbtn" onClick={() => lowToHigh()} >Sort by Low to High</button>
+            <button className="add-btn sortbtn" onClick={() => highToLow()} >Sort by High to Low</button>
+            <button className="add-btn sortbtn" onClick={() => ratingLessPopular()} >Rating Less Popular</button>
+            <button className="add-btn sortbtn" onClick={() => ratingPopular()} >Rating Most Popular</button>
+            <button className="add-btn sortbtn" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
+            <button className="add-btn sortbtn" onClick={() => countLowToHigh()} >Sort by Count (low -high)</button>
+            <input type="text" className="searchbtn sortbtn" value={searchTerm} onChange={handleSearchChange} placeholder='search product....'></input>
+          </div>
+
           <Modal
             open={open}
             onClose={handleClose}
@@ -284,8 +305,8 @@ const countLowToHigh=()=>{
 
               <Button
                 style={{ backgroundColor: "green", color: "white" }}
-                onClick={() =>   createProduct()}
-              
+                onClick={() => createProduct()}
+
               >
                 Save
               </Button>
@@ -299,7 +320,7 @@ const countLowToHigh=()=>{
             <table>
               <thead>
                 <tr>
-                  <th>Id</th>
+                  <th >Id</th>
                   <th>Image</th>
                   <th>Title</th>
                   <th>Category</th>
@@ -313,7 +334,7 @@ const countLowToHigh=()=>{
                 {
                   (filteredProducts.length > 0 ? filteredProducts : products).map((product) => (
 
-                    <tr key={product.id}>
+                    <tr key={product.id}  style={{backgroundColor:product.rating.count<100 ?"#D97974":product.rating.count>200?"#E6E9AF" :"transparent"}}>
                       <td>{product.id}</td>
                       <td><img style={{ width: "100px", height: "100px" }} src={product.image} alt="" /></td>
                       <td>{product.title}</td>
@@ -324,7 +345,15 @@ const countLowToHigh=()=>{
                           {product.rating.rate}<StarIcon style={{ color: "yellow" }} />
                         </div>
                       </td>
-                      <td>{product.rating.count}</td>
+                      <td >
+
+                        
+
+                          {product.rating.count}
+
+                      
+
+                      </td>
                       <td>
                         <div className="action" style={{ display: "flex", gap: "20px", justifyContent: "center", alignItems: "center" }}>
                           <Button style={{ color: "#C30E59", minWidth: "20px" }}

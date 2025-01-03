@@ -104,3 +104,8 @@ a{
 .sortcount{
 width: auto!important;
 }
+
+.searchbtn{
+  padding: 10px;
+  border: none;
+}

@@ -23,11 +23,10 @@ const Navbar = () => {
     const basketItems = useSelector((state) => state.basket.value);
     const totalItems = basketItems.reduce((total, item) => total + item.count, 0);
 
-    // Hər input dəyişdikdə axtarışı yenilə
     const handleSearchChange = (e) => {
         const term = e.target.value;
         setSearchTerm(term);
-        dispatch(searchProducts(term)); // Redux action-a axtarış göndərmək
+        dispatch(searchProducts(term)); 
     };
 
     const loginedUser = async () => {
@@ -60,7 +59,7 @@ const Navbar = () => {
                                     type="text"
                                     className="search"
                                     value={searchTerm}
-                                    onChange={handleSearchChange}  // Inputa yazarkən axtarışı yenilə
+                                    onChange={handleSearchChange}  
                                     placeholder="Search..."
                                 />
                                 <img src={search} alt="search icon" className="searchicon" />
