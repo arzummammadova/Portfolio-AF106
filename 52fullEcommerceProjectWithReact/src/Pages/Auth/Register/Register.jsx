@@ -27,7 +27,7 @@ const Register = () => {
 
         setTimeout(() => {
 
-          navigate("/");
+          navigate("/login");
           
         }, 2000);
         action.resetForm();

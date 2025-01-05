@@ -64,11 +64,11 @@ const Basket = () => {
                         <p>USD ${product.price.toFixed(2)}</p>
                       </div>
 
-                      <div className="quantity">
+                     <div className="quantity">
                         <p>Quantity: {product.count}</p>
                         <button className="decrement" onClick={() => handleUpdateQuantity(product.id, -1)}>-</button>
                         <button className="increment" onClick={() => handleUpdateQuantity(product.id, 1)}>+</button>
-                      </div>
+                      </div> 
 
                       <div className="movement">
                         <div className="remove" onClick={() => handleRemove(product.id)}>

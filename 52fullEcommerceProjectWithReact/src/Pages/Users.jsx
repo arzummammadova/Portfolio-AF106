@@ -187,9 +187,9 @@ const Users = () => {
                                             <Button onClick={() => { handleOpenInfo(user) }} style={{ color: '#47663B' }} startIcon={<InfoIcon />} >wiew</Button>
 
 
-                                            <Button onClick={() => { makeadmin(user.id) }}>
+                                            {/* <Button onClick={() => { makeadmin(user.id) }}>
                                                 {user.isAdmin ? ('Remove Admin') : ('Make Admin')}
-                                            </Button>
+                                            </Button> */}
 
                                         </div>
                                     </td>

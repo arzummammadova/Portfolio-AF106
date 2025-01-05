@@ -1,5 +1,6 @@
 import React from 'react'
 import hero from '../../assets/images/hero.png'
+import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
     <div>
@@ -16,7 +17,7 @@ const Hero = () => {
                             It is a long established fact that a reader will be distracted by the readable content
                             expound the actual teachings of the great explorer
                         </p>
-                        <a href="">Shop now</a>
+                        <Link to="/shoulderbag">Shop now</Link>
                         <div class="circles">
                             <div class="circle"></div>
                             <div class="circle"></div>

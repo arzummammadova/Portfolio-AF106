@@ -10,7 +10,7 @@
       "firstName": "admin",
       "lastName": "Mammadova",
       "data": "2025-01-03T12:40:58.688Z",
-      "isLogin": false,
+      "isLogin": true,
       "isAdmin": true
     },
     {
@@ -40,19 +40,6 @@
       "isAdmin": false
     },
     {
-      "id": "2093",
-      "username": "anomane",
-      "email": "noname@gmail.com",
-      "password": "Secure2024@",
-      "confirmPassword": "Secure2024@",
-      "gender": "female",
-      "firstName": "noname",
-      "lastName": "noname",
-      "data": "2025-01-03T13:32:31.544Z",
-      "isLogin": false,
-      "isAdmin": false
-    },
-    {
       "id": "ae3c",
       "username": "Arzum",
       "email": "aminmamadov@gmail.com",
@@ -77,6 +64,45 @@
       "data": "2025-01-03T19:22:10.508Z",
       "isLogin": false,
       "isAdmin": false
+    },
+    {
+      "id": "ea15",
+      "firstName": "emma",
+      "lastName": "stone",
+      "username": "emma2024",
+      "email": "adminadmin@gmail.com",
+      "password": "arzumarzum",
+      "confirmPassword": "arzumarzum",
+      "gender": "",
+      "data": "",
+      "isLogin": false,
+      "isAdmin": ""
+    },
+    {
+      "id": "9a75",
+      "firstName": "hello",
+      "lastName": "hi",
+      "username": "hello123",
+      "email": "hello133@gmail.com",
+      "password": "hihellohi",
+      "confirmPassword": "hihellohi",
+      "gender": "male",
+      "data": "2025-01-04T09:20:15.768Z",
+      "isLogin": false,
+      "isAdmin": ""
+    },
+    {
+      "id": "3c05",
+      "firstName": "Arzu",
+      "lastName": "Mammadova",
+      "username": "arzu2005",
+      "email": "arzuam-af106@code.edu.az",
+      "password": "Secure2024@",
+      "confirmPassword": "Secure2024@",
+      "gender": "female",
+      "data": "2025-01-04T11:24:34.339Z",
+      "isLogin": false,
+      "isAdmin": ""
     }
   ],
   "products": [
@@ -89,7 +115,7 @@
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       "rating": {
         "rate": 999,
-        "count": 259
+        "count": 240
       }
     },
     {
@@ -307,6 +333,18 @@
         "rate": 3.6,
         "count": 145
       }
+    },
+    {
+      "id": "ff38",
+      "title": "men",
+      "description": "jj",
+      "category": "jj",
+      "price": 4949,
+      "rating": {
+        "rate": null,
+        "count": 59
+      },
+      "image": "jj"
     }
   ]
 }
