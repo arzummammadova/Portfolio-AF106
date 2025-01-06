@@ -12,65 +12,66 @@ import Details from './components/Details'
 import Wishlist from './Pages/Wishlist'
 import Basket from './Pages/Basket'
 import Users from './Pages/Users'
+import AdminProtectedRoute from './AdminProtectedRoute'
+import Notauthorized from './Pages/Notauthorized'
+
 const App = () => {
+  const isAdmin = true
+
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <Layout />,
-
       children: [
         {
-          path: "/",
-          element: <Home />
-        }
-        , {
-          path: "/adminpanel",
-          element: <Adminpanel />
-        }
-        ,{
-          path:"/shoulderbag",
-          element:<Shoulderbag/>
-        }
-        ,
-        {
-          path:"/details/:id",
-          element:<Details/>
+          path: '/',
+          element: <Home />,
         },
         {
-          path:"/wishlist",
-          element:<Wishlist/>
-        }
-        ,{
-          path:"/basket",
-          element:<Basket/>
+          path: '/adminpanel',
+          element: (
+            <AdminProtectedRoute isAdmin={isAdmin}>
+              <Adminpanel />
+            </AdminProtectedRoute>
+          ),
         },
         {
-          path:"/users",
-          element:<Users/>
-        }
-      ]
-
+          path: '/shoulderbag',
+          element: <Shoulderbag />,
+        },
+        {
+          path: '/details/:id',
+          element: <Details />,
+        },
+        {
+          path: '/wishlist',
+          element: <Wishlist />,
+        },
+        {
+          path: '/basket',
+          element: <Basket />,
+        },
+        {
+          path: '/users',
+          element: <Users />,
+        },
+      ],
     },
-
     {
-
-      path: "/register",
-      element: <Register />
-    }
-    ,
+      path: '/register',
+      element: <Register />,
+    },
     {
-      path: "/login",
-      element: <Login />
-    }
-    
-
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/notauthorized',
+      element: <Notauthorized/>, 
+    },
   ])
-  return (
-    <RouterProvider router={router}>
-      <App />
 
-    </RouterProvider>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
