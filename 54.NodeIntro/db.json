@@ -1,0 +1,78 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "Ali",
+            "surname": "Hasanov",
+            "age": 20,
+            "isStudent": true
+        },
+        {
+            "id": 3,
+            "name": "Murad",
+            "surname": "Mammadov",
+            "age": 22,
+            "isStudent": true
+        },
+        {
+            "id": 4,
+            "name": "Nigar",
+            "surname": "Aliyeva",
+            "age": 21,
+            "isStudent": true
+        },
+        {
+            "id": 5,
+            "name": "Orxan",
+            "surname": "Abdullayev",
+            "age": 23,
+            "isStudent": true
+        },
+        {
+            "id": 6,
+            "name": "Aygun",
+            "surname": "Huseynova",
+            "age": 20,
+            "isStudent": true
+        },
+        {
+            "id": 7,
+            "name": "Elnur",
+            "surname": "Kerimov",
+            "age": 24,
+            "isStudent": true
+        },
+        {
+            "id": 8,
+            "name": "Sevinc",
+            "surname": "Haciyeva",
+            "age": 22,
+            "isStudent": true
+        },
+        {
+            "id": 9,
+            "name": "Turan",
+            "surname": "Ibrahimov",
+            "age": 19,
+            "isStudent": true
+        },
+        {
+            "id": "d9849764-755b-49c5-9ecf-75818ab63e93",
+            "name": "Aysel",
+            "age": 20
+        },
+        {
+            "id": "ac547c7c-c2b1-48f9-b8c6-c95278a316af",
+            "name": "Arzu",
+            "surname": "Memmedova",
+            "age": 19,
+            "isStudent": true
+        },
+        {
+            "id": "8a582482-ac6a-4363-9080-c5aaa6ce2aae",
+            "name": "Aydan",
+            "surname": "Meheremmova",
+            "age": 45
+        }
+    ]
+}
