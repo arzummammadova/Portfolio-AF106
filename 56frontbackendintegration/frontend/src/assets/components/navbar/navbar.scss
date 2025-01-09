@@ -1,0 +1,25 @@
+.navbar{
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+.logo{
+    font-size: 25px;
+}
+    .pages{
+
+        ul{
+          display: flex;
+          gap: 2rem;
+        }
+         a{
+          color: white;
+         }
+      }
+}
+
+

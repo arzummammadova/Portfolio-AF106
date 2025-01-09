@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+}
+.navbar .logo {
+  font-size: 25px;
+}
+.navbar .pages ul {
+  display: flex;
+  gap: 2rem;
+}
+.navbar .pages a {
+  color: white;
+}/*# sourceMappingURL=navbar.css.map */
